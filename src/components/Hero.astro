@@ -1,47 +1,93 @@
 ---
 import { hero, profile } from "../content/site";
+
+// Render headline with serif italic word(s) wrapped in { }
+function parseHeadline(s: string) {
+  const parts: { text: string; italic: boolean }[] = [];
+  const re = /\{([^}]+)\}/g;
+  let last = 0;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(s)) !== null) {
+    if (m.index > last) parts.push({ text: s.slice(last, m.index), italic: false });
+    parts.push({ text: m[1], italic: true });
+    last = m.index + m[0].length;
+  }
+  if (last < s.length) parts.push({ text: s.slice(last), italic: false });
+  return parts;
+}
+const headlineParts = parseHeadline(hero.headline);
 ---
 
-<section id="top" class="section pt-24 md:pt-32">
-  <div class="container-page">
-    <div class="max-w-4xl">
-      <p class="eyebrow reveal">{hero.eyebrow}</p>
+<section id="top" class="relative overflow-hidden border-b border-line">
+  <!-- Subtle radial wash behind the hero -->
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute -top-32 -left-32 h-[520px] w-[520px] rounded-full"
+    style="background: radial-gradient(circle, rgba(185,255,102,0.08) 0%, rgba(185,255,102,0) 65%);"
+  />
 
-      <h1
-        class="reveal mt-6 text-balance text-4xl font-medium leading-[1.05] tracking-tightest text-ink-50 md:text-6xl lg:text-7xl"
-      >
-        {hero.headline}
-      </h1>
+  <div class="container-page relative pt-20 pb-24 md:pt-28 md:pb-32 lg:pt-32 lg:pb-40">
+    <!-- Top metadata row -->
+    <div class="reveal flex flex-wrap items-center justify-between gap-4">
+      <div class="status-pill">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span class="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-100">
+          {hero.status.pill}
+        </span>
+      </div>
+      <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-400">
+        {profile.location} / {profile.title}
+      </div>
+    </div>
 
-      <p class="reveal mt-8 max-w-2xl text-lg leading-relaxed text-ink-200 md:text-xl">
+    <!-- Headline -->
+    <h1
+      class="reveal heading-serif-mix mt-10 text-balance text-display-lg md:text-display-xl"
+      style="transition-delay: 80ms;"
+    >
+      {
+        headlineParts.map((p) =>
+          p.italic ? (
+            <em>{p.text}</em>
+          ) : (
+            <span>{p.text}</span>
+          )
+        )
+      }
+    </h1>
+
+    <!-- Subhead + CTAs -->
+    <div class="reveal mt-10 grid gap-10 lg:grid-cols-12" style="transition-delay: 160ms;">
+      <p class="text-lg leading-relaxed text-ink-200 lg:col-span-7 max-w-2xl">
         {hero.subhead}
       </p>
-
-      <div class="reveal mt-10 flex flex-wrap items-center gap-3">
-        <a href={hero.primaryCta.href} class="btn btn-primary">
-          {hero.primaryCta.label}
+      <div class="lg:col-span-5 flex flex-wrap items-start gap-3 lg:justify-end">
+        <a href={hero.ctas.primary.href} class="btn btn-primary">
+          {hero.ctas.primary.label}
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M5 12h14M13 5l7 7-7 7"/>
+            <path d="M5 12h14M13 5l7 7-7 7" />
           </svg>
         </a>
-        <a href={hero.secondaryCta.href} class="btn btn-secondary">
-          {hero.secondaryCta.label}
+        <a href={hero.ctas.secondary.href} class="btn btn-secondary">
+          {hero.ctas.secondary.label}
         </a>
-        {
-          hero.tertiaryLinks.map((l) => (
-            <a href={l.href} class="btn btn-ghost text-sm" target={l.href.startsWith("http") ? "_blank" : undefined} rel={l.href.startsWith("http") ? "noopener noreferrer" : undefined}>
-              {l.label}
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M7 17L17 7M7 7h10v10"/>
-              </svg>
-            </a>
-          ))
-        }
       </div>
+    </div>
 
-      <p class="reveal mt-12 font-mono text-xs uppercase tracking-[0.18em] text-ink-400">
-        {profile.location} · {profile.availability}
-      </p>
+    <!-- Tertiary links -->
+    <div class="reveal mt-8 flex flex-wrap items-center gap-x-6 gap-y-2" style="transition-delay: 240ms;">
+      {
+        hero.ctas.tertiary.map((l) => (
+          <a
+            href={l.href}
+            class="text-sm text-ink-300 hover:text-ink-50"
+            target={l.href.startsWith("http") ? "_blank" : undefined}
+            rel={l.href.startsWith("http") ? "noopener noreferrer" : undefined}
+          >
+            {l.label}
+          </a>
+        ))
+      }
     </div>
   </div>
 </section>

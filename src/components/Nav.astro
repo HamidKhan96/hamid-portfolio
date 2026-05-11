@@ -2,22 +2,25 @@
 import { profile } from "../content/site";
 
 const links = [
-  { href: "#about", label: "About" },
-  { href: "#systems", label: "What I build" },
   { href: "#case-studies", label: "Case studies" },
-  { href: "#experience", label: "Experience" },
+  { href: "#systems", label: "Systems" },
+  { href: "#pipeline", label: "Skills" },
+  { href: "#track-record", label: "Track record" },
   { href: "#contact", label: "Contact" },
 ];
 ---
 
-<header class="sticky top-0 z-40 border-b border-white/[0.05] bg-ink-950/70 backdrop-blur-md">
-  <nav class="container-page flex h-16 items-center justify-between" aria-label="Primary">
-    <a href="#top" class="flex items-center gap-2 font-medium tracking-tight text-ink-50">
-      <span class="inline-block h-2 w-2 rounded-full bg-accent"></span>
-      <span>{profile.name}</span>
+<header class="sticky top-0 z-40 border-b border-line bg-bg/85 backdrop-blur-xl">
+  <nav
+    class="container-page flex h-16 items-center justify-between"
+    aria-label="Primary"
+  >
+    <a href="#top" class="flex items-center gap-2.5 text-sm font-medium text-ink-50">
+      <span class="status-dot" aria-hidden="true"></span>
+      <span class="font-mono tracking-[0.04em]">hamid.khan</span>
     </a>
 
-    <ul class="hidden items-center gap-8 md:flex">
+    <ul class="hidden items-center gap-7 md:flex">
       {
         links.map((l) => (
           <li>
@@ -29,9 +32,9 @@ const links = [
       }
     </ul>
 
-    <div class="flex items-center gap-3">
+    <div class="flex items-center gap-2">
       <a href={profile.cvPath} class="btn btn-secondary text-xs hidden sm:inline-flex">
-        Download CV
+        CV
       </a>
       <a href={`mailto:${profile.email}`} class="btn btn-primary text-xs">
         Get in touch

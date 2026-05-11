@@ -3,29 +3,31 @@ import { about } from "../content/site";
 ---
 
 <section id="about" class="section">
-  <div class="container-page grid gap-16 lg:grid-cols-12">
-    <div class="reveal lg:col-span-4">
-      <p class="eyebrow">About</p>
-      <h2 class="mt-4 text-balance text-3xl font-medium leading-tight tracking-tight text-ink-50 md:text-4xl">
-        {about.heading}
-      </h2>
-    </div>
-
-    <div class="lg:col-span-8">
-      <div class="space-y-6 text-lg leading-relaxed text-ink-200">
-        {about.paragraphs.map((p) => <p class="reveal">{p}</p>)}
+  <div class="container-page">
+    <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
+      <div class="reveal lg:col-span-4">
+        <p class="section-label">{about.label}</p>
+        <h2 class="heading-serif-mix mt-5 text-balance text-display-md">
+          {about.heading}
+        </h2>
       </div>
 
-      <ul class="reveal mt-10 grid gap-3 sm:grid-cols-2">
-        {
-          about.bullets.map((b) => (
-            <li class="flex items-start gap-3 text-sm text-ink-200">
-              <span class="mt-1.5 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-              <span>{b}</span>
-            </li>
-          ))
-        }
-      </ul>
+      <div class="reveal lg:col-span-8" style="transition-delay: 80ms;">
+        <div class="space-y-5 text-lg leading-relaxed text-ink-200">
+          {about.paragraphs.map((p) => <p class="text-pretty">{p}</p>)}
+        </div>
+
+        <ul class="mt-10 grid gap-3 sm:grid-cols-2">
+          {
+            about.bullets.map((b) => (
+              <li class="flex items-start gap-3 text-sm text-ink-200">
+                <span class="mt-2 inline-block h-1 w-3 shrink-0 bg-lime/80" />
+                <span>{b}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
     </div>
   </div>
 </section>

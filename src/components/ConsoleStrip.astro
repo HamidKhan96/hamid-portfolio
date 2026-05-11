@@ -1,0 +1,29 @@
+---
+import { consoleStrip } from "../content/site";
+// Strip duplicated content for a seamless ticker loop
+const items = [...consoleStrip, ...consoleStrip];
+---
+
+<section
+  aria-label="Profile console"
+  class="border-b border-line bg-surface-1/50"
+>
+  <div class="overflow-hidden mask-fade-x">
+    <ul class="flex w-max animate-ticker gap-12 py-4">
+      {
+        items.map((m, i) => (
+          <li class="flex items-center gap-3 whitespace-nowrap">
+            <span class="meta-key">{m.key}</span>
+            <span class="text-ink-500">·</span>
+            <span class="meta-val">{m.value}</span>
+            {i < items.length - 1 && (
+              <span class="text-ink-600 ml-12" aria-hidden="true">
+                ─
+              </span>
+            )}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
