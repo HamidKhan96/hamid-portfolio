@@ -1,8 +1,10 @@
+/* Inter Variable's wght.css splits into unicode-range subsets, so browsers
+   only download the one matching used characters. Keep the full import. */
 @import "@fontsource-variable/inter/wght.css";
-@import "@fontsource/instrument-serif/400.css";
-@import "@fontsource/instrument-serif/400-italic.css";
-@import "@fontsource/jetbrains-mono/400.css";
-@import "@fontsource/jetbrains-mono/500.css";
+@import "@fontsource/instrument-serif/latin-400.css";
+@import "@fontsource/instrument-serif/latin-400-italic.css";
+@import "@fontsource/jetbrains-mono/latin-400.css";
+@import "@fontsource/jetbrains-mono/latin-500.css";
 
 @tailwind base;
 @tailwind components;
