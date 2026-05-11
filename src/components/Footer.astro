@@ -71,14 +71,25 @@ const updated = new Date().toLocaleDateString("en-US", { year: "numeric", month:
       <span>
         // Built in Astro · Deployed on Cloudflare Pages · Coded by Hamid
       </span>
-      <a
-        href="https://github.com/HamidKhan96/hamid-portfolio"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="hover:text-lime transition-colors"
-      >
-        view source ↗
-      </a>
+      <div class="flex flex-wrap items-center gap-3">
+        <a
+          href="https://github.com/HamidKhan96/hamid-portfolio/commits/main"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hover:text-lime transition-colors"
+        >
+          commit log ↗
+        </a>
+        <span class="text-ink-600">·</span>
+        <a
+          href="https://github.com/HamidKhan96/hamid-portfolio"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hover:text-lime transition-colors"
+        >
+          view source ↗
+        </a>
+      </div>
     </div>
   </div>
 </footer>
