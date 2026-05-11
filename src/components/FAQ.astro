@@ -1,0 +1,69 @@
+---
+const faqs = [
+  {
+    q: "What roles are you actually looking at?",
+    a: "Full-cycle AE seats at seed to Series C B2B tech. Also GTM Engineer or RevOps roles where the work is building outbound systems, not just running them. Remote-first. Open to hybrid in Lahore or APAC.",
+  },
+  {
+    q: "What's your patch experience?",
+    a: "US enterprise (Devsinc), LATAM nearshoring into the US (Bydrec), and APAC tech services (MUST). Healthcare, SaaS, e-commerce, fintech, and AI-development buyers.",
+  },
+  {
+    q: "Do you cold call?",
+    a: "Yes. Cold calling is a question-asking discipline, not a pitch contest. I treat it the same way I treat email: trigger event in, problem hypothesis in the opener, lower the action on the close.",
+  },
+  {
+    q: "How long is your ramp?",
+    a: "Two weeks to operate. Four weeks to ship a first pipeline-system upgrade. The first 30/60-day plan I send you is the spec, not the brochure.",
+  },
+  {
+    q: "Will you talk to a CTO and not embarrass me?",
+    a: "Mechanical engineering degree, two years on a factory floor, three years selling into engineering buyers. I can walk a CTO through a tech-stack diagram and still ask the questions a salesperson is supposed to ask.",
+  },
+  {
+    q: "What is the cheapest way to evaluate me?",
+    a: "Send me one of your live ICPs. I will return a sample sequence, an account-research summary on three logos, and a workflow diagram of how I would run the cadence inside your existing stack. No NDA needed for that.",
+  },
+];
+---
+
+<section id="faq" class="section border-t border-line bg-surface-1/30">
+  <div class="container-page">
+    <div class="reveal grid gap-6 lg:grid-cols-12 lg:gap-12 mb-12">
+      <div class="lg:col-span-7">
+        <p class="section-label">$ faq</p>
+        <h2 class="heading-serif-mix mt-5 text-balance text-display-lg">
+          The questions hiring managers <em>actually</em> ask.
+        </h2>
+      </div>
+      <p class="lg:col-span-5 self-end text-base text-ink-200 max-w-prose">
+        Pulled from real conversations with founders, sales leaders, and recruiters. Direct answers below.
+      </p>
+    </div>
+
+    <ol class="grid gap-px overflow-hidden rounded-md border border-line bg-line md:grid-cols-2">
+      {
+        faqs.map((f, i) => (
+          <li
+            class="reveal spotlight bg-surface-1 p-6 md:p-8"
+            style={`transition-delay: ${i * 50}ms;`}
+          >
+            <div class="flex items-start gap-4">
+              <span class="font-mono text-xs text-lime/80 mt-1 shrink-0">
+                Q{String(i + 1).padStart(2, "0")}
+              </span>
+              <div>
+                <h3 class="text-base md:text-lg font-medium text-ink-50 leading-snug">
+                  {f.q}
+                </h3>
+                <p class="mt-3 text-sm leading-relaxed text-ink-200">
+                  {f.a}
+                </p>
+              </div>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
