@@ -21,7 +21,7 @@ import { pipeline } from "../content/site";
       <ol class="grid gap-px overflow-hidden rounded-md border border-line bg-line md:grid-cols-3 lg:grid-cols-6">
         {
           pipeline.stages.map((s, i) => (
-            <li class="bg-surface-1 p-5 md:p-6 hover:bg-surface-2 transition-colors duration-200">
+            <li class="spotlight bg-surface-1 p-5 md:p-6 hover:bg-surface-2 transition-colors duration-200">
               <header class="flex items-center justify-between">
                 <span class="font-mono text-[10px] uppercase tracking-[0.18em] text-ink-400">
                   Stage {String(i + 1).padStart(2, "0")}

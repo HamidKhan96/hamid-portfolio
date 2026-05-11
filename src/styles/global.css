@@ -126,9 +126,49 @@
   .card {
     @apply border border-line bg-surface-1/60 backdrop-blur-[2px];
     border-radius: 6px;
+    position: relative;
+    overflow: hidden;
   }
   .card-hover:hover {
     @apply border-line2 bg-surface-2/70;
+  }
+
+  /* Spotlight cards: a soft radial glow follows the cursor. */
+  .spotlight {
+    position: relative;
+    isolation: isolate;
+  }
+  .spotlight::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 280ms ease;
+    background: radial-gradient(
+      420px circle at var(--mx, 50%) var(--my, 50%),
+      rgba(185, 255, 102, 0.10),
+      transparent 50%
+    );
+  }
+  .spotlight:hover::before { opacity: 1; }
+  .spotlight > * { position: relative; z-index: 1; }
+
+  /* Tilt cards: subtle 3D rotate based on mouse position. */
+  .tilt {
+    transform-style: preserve-3d;
+    transform: perspective(900px)
+      rotateX(var(--rx, 0deg))
+      rotateY(var(--ry, 0deg));
+    transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  /* Magnetic primary button (slight pull toward cursor) */
+  .magnetic {
+    transition: transform 200ms cubic-bezier(0.2, 0.9, 0.2, 1);
+    will-change: transform;
   }
 
   /* CRM-style ticket card layout */
@@ -202,6 +242,12 @@
   .hairline {
     @apply border-t border-line;
   }
+}
+
+@keyframes heroFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(40px, -30px) scale(1.05); }
+  66% { transform: translate(-30px, 30px) scale(0.95); }
 }
 
 @layer utilities {

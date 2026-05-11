@@ -19,12 +19,21 @@ const headlineParts = parseHeadline(hero.headline);
 ---
 
 <section id="top" class="relative overflow-hidden border-b border-line">
-  <!-- Subtle radial wash behind the hero -->
-  <div
-    aria-hidden="true"
-    class="pointer-events-none absolute -top-32 -left-32 h-[520px] w-[520px] rounded-full"
-    style="background: radial-gradient(circle, rgba(185,255,102,0.08) 0%, rgba(185,255,102,0) 65%);"
-  />
+  <!-- Aurora mesh: two slow-floating radial gradients + soft grid overlay -->
+  <div aria-hidden="true" class="pointer-events-none absolute inset-0 overflow-hidden">
+    <div
+      class="absolute -top-40 -left-40 h-[640px] w-[640px] rounded-full blur-3xl"
+      style="background: radial-gradient(circle, rgba(185,255,102,0.12), rgba(185,255,102,0) 65%); animation: heroFloat 18s ease-in-out infinite;"
+    />
+    <div
+      class="absolute top-1/2 -right-32 h-[520px] w-[520px] rounded-full blur-3xl"
+      style="background: radial-gradient(circle, rgba(140,200,255,0.07), rgba(140,200,255,0) 65%); animation: heroFloat 22s ease-in-out infinite reverse;"
+    />
+    <div
+      class="absolute inset-0 opacity-[0.04]"
+      style="background-image: linear-gradient(rgba(255,255,255,0.7) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.7) 1px, transparent 1px); background-size: 80px 80px; mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 75%); -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 75%);"
+    />
+  </div>
 
   <div class="container-page relative pt-20 pb-24 md:pt-28 md:pb-32 lg:pt-32 lg:pb-40">
     <!-- Top metadata row -->
@@ -62,7 +71,7 @@ const headlineParts = parseHeadline(hero.headline);
         {hero.subhead}
       </p>
       <div class="lg:col-span-5 flex flex-wrap items-start gap-3 lg:justify-end">
-        <a href={hero.ctas.primary.href} class="btn btn-primary">
+        <a href={hero.ctas.primary.href} class="btn btn-primary magnetic">
           {hero.ctas.primary.label}
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M5 12h14M13 5l7 7-7 7" />

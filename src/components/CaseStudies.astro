@@ -20,7 +20,7 @@ import { caseStudies } from "../content/site";
       {
         caseStudies.items.map((c, i) => (
           <article
-            class={`reveal ticket scroll-mt-24 ${i === 0 || i === 3 ? "md:col-span-2" : ""}`}
+            class={`reveal ticket spotlight scroll-mt-24 ${i === 0 || i === 3 ? "md:col-span-2" : ""}`}
             style={`transition-delay: ${i * 60}ms;`}
             id={c.id}
           >

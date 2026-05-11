@@ -1,0 +1,53 @@
+---
+const stats = [
+  { value: 3, suffix: "+", label: "Years B2B tech sales" },
+  { value: 6, suffix: "", label: "Systems built and shipped" },
+  { value: 4, suffix: "", label: "Markets worked (US, LATAM, APAC, EU)" },
+  { value: 100, suffix: "%", label: "Full-cycle, SDR through close" },
+];
+
+const tools = [
+  "Claude", "Apollo", "Sales Navigator", "ZoomInfo", "HubSpot",
+  "Salesforce", "n8n", "Sheets", "Apps Script", "Gmail API",
+  "Playwright", "Notion", "Calendly",
+];
+const marquee = [...tools, ...tools];
+---
+
+<section
+  aria-label="Profile statistics"
+  class="border-y border-line bg-surface-1/40"
+>
+  <div class="container-page py-14 md:py-20">
+    <ul class="grid grid-cols-2 gap-px overflow-hidden rounded-md border border-line bg-line md:grid-cols-4">
+      {
+        stats.map((s) => (
+          <li class="bg-surface-1 px-6 py-7 md:px-8 md:py-9">
+            <p class="font-serif text-5xl md:text-6xl text-ink-50 leading-none">
+              <span data-counter={s.value} data-suffix={s.suffix}>0{s.suffix}</span>
+            </p>
+            <p class="mt-4 font-mono text-[11px] uppercase tracking-[0.18em] text-ink-300">
+              {s.label}
+            </p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+
+  <!-- Tool marquee, larger -->
+  <div class="border-t border-line py-5 overflow-hidden mask-fade-x">
+    <ul class="flex w-max animate-ticker gap-10 items-center">
+      {
+        marquee.map((t) => (
+          <li class="flex items-center gap-10 whitespace-nowrap">
+            <span class="font-serif text-2xl md:text-3xl text-ink-200">
+              {t}
+            </span>
+            <span class="text-lime/40 text-xl" aria-hidden="true">✦</span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
