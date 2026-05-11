@@ -1,5 +1,5 @@
 ---
-const faqs = [
+const faqsRaw = [
   {
     q: "What roles are you actually looking at?",
     a: "Full-cycle AE seats at seed to Series C B2B tech. Also GTM Engineer or RevOps roles where the work is building outbound systems, not just running them. Remote-first. Open to hybrid in Lahore or APAC.",
@@ -25,7 +25,24 @@ const faqs = [
     a: "Send me one of your live ICPs. I will return a sample sequence, an account-research summary on three logos, and a workflow diagram of how I would run the cadence inside your existing stack. No NDA needed for that.",
   },
 ];
+const faqs = faqsRaw;
+
+// FAQ schema for SEO (Schema.org FAQPage)
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqsRaw.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: f.a,
+    },
+  })),
+};
 ---
+
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
 
 <section id="faq" class="section border-t border-line bg-surface-1/30">
   <div class="container-page">
