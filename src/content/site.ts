@@ -261,6 +261,54 @@ export const pipeline = {
   ],
 };
 
+// Principles synthesized from the working sales canon I study.
+// Voice is mine. Influences in the meta line.
+export const principles = {
+  label: "$ how_i_sell",
+  heading: "Six principles I sell from.",
+  intro:
+    "Not slogans. Operating rules I have made expensive mistakes to earn. They show up in the systems, the tone, and the cadence I bring into any GTM team.",
+  influences: "Studies: Josh Braun, Jeremy Miner, Chris Voss, Anthony Iannarino, Jeb Blount, Mark Hunter, Aaron Ross, Trish Bertuzzi",
+  items: [
+    {
+      n: "01",
+      title: "Diagnose before I pitch.",
+      body:
+        "A discovery call is not a feature tour. I want to leave knowing the problem better than the buyer described it. Questions outnumber answers, every time.",
+    },
+    {
+      n: "02",
+      title: "Lower the action.",
+      body:
+        "The biggest ask in any cold message kills the reply rate. I ask for a yes I can already see. Then the next yes. Then the next.",
+    },
+    {
+      n: "03",
+      title: "Trigger events earn the message.",
+      body:
+        "Hiring spikes, funded rounds, leadership moves, regulatory changes. I time outbound to events that prove the buyer is open. Calendars do not earn replies.",
+    },
+    {
+      n: "04",
+      title: "Follow-up is the system.",
+      body:
+        "Most deals die on day eleven. I build the cadence into the workflow so day-eleven follow-up is cheap, scheduled, and inevitable.",
+    },
+    {
+      n: "05",
+      title: "Tone is the message.",
+      body:
+        "Curious beats pitchy. Calm beats urgent. Buyers register tonality before they register words. I match the room, not my mood.",
+    },
+    {
+      n: "06",
+      title: "Pipeline math protects the rep.",
+      body:
+        "Activity targets without a coverage ratio are vanity. I size pipeline against quota, then work the gap. The plan survives the quarter, not the week.",
+    },
+  ],
+};
+
 export const trackRecord = {
   label: "$ track_record",
   heading: "Five roles. One throughline.",
