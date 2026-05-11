@@ -148,12 +148,36 @@
     opacity: 0;
     transition: opacity 280ms ease;
     background: radial-gradient(
-      420px circle at var(--mx, 50%) var(--my, 50%),
-      rgba(185, 255, 102, 0.10),
-      transparent 50%
+      460px circle at var(--mx, 50%) var(--my, 50%),
+      rgba(185, 255, 102, 0.16),
+      transparent 55%
     );
   }
   .spotlight:hover::before { opacity: 1; }
+  .spotlight::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    border-radius: inherit;
+    opacity: 0;
+    transition: opacity 280ms ease;
+    border: 1px solid transparent;
+    background:
+      radial-gradient(
+        320px circle at var(--mx, 50%) var(--my, 50%),
+        rgba(185, 255, 102, 0.25),
+        transparent 60%
+      )
+      border-box;
+    -webkit-mask:
+      linear-gradient(#000 0 0) padding-box,
+      linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+            mask-composite: exclude;
+  }
+  .spotlight:hover::after { opacity: 1; }
   .spotlight > * { position: relative; z-index: 1; }
 
   /* Tilt cards: subtle 3D rotate based on mouse position. */
