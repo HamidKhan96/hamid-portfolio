@@ -1,0 +1,3 @@
+Drop your CV as `cv.pdf` in this folder before deploying.
+
+The site references `/cv.pdf` from the Hero "Download CV" button and the Resources section.
