@@ -28,6 +28,14 @@ const { title, description } = Astro.props;
     >
       Skip to content
     </a>
+
+    <!-- Top scroll-progress bar -->
+    <div
+      id="scroll-progress"
+      class="fixed top-0 left-0 h-[2px] bg-lime z-50 w-0 transition-[width] duration-75 ease-out"
+      aria-hidden="true"
+    ></div>
+
     <slot />
 
     <script>
@@ -89,7 +97,19 @@ const { title, description } = Astro.props;
         });
       });
 
-      // 5. Animated counters
+      // 5. Scroll progress bar
+      const progress = document.getElementById("scroll-progress");
+      const updateProgress = () => {
+        const h = document.documentElement;
+        const max = h.scrollHeight - h.clientHeight;
+        const pct = max > 0 ? (h.scrollTop / max) * 100 : 0;
+        if (progress) progress.style.width = pct + "%";
+      };
+      updateProgress();
+      window.addEventListener("scroll", updateProgress, { passive: true });
+      window.addEventListener("resize", updateProgress);
+
+      // 6. Animated counters
       const counters = document.querySelectorAll("[data-counter]");
       const cObs = new IntersectionObserver(
         (entries) => {
