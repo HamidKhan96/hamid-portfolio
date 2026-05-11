@@ -1,6 +1,12 @@
 ---
 import { profile } from "../content/site";
 
+const announcement = {
+  label: "Now shipping",
+  text: "Outbound system v2 at MUST Company",
+  href: "#case-studies",
+};
+
 const links = [
   { href: "#principles", label: "Principles" },
   { href: "#case-studies", label: "Case studies" },
@@ -10,6 +16,23 @@ const links = [
   { href: "#track-record", label: "Track record" },
 ];
 ---
+
+<!-- Thin announcement bar -->
+<div class="border-b border-line bg-surface-1/40 backdrop-blur-md">
+  <div class="container-page flex h-9 items-center justify-center text-center">
+    <a href={announcement.href} class="group inline-flex items-center gap-3 text-[11px] font-mono uppercase tracking-[0.16em]">
+      <span class="inline-block h-1.5 w-1.5 rounded-full bg-lime animate-[pulseDot_2s_ease-in-out_infinite]" aria-hidden="true"></span>
+      <span class="text-lime">{announcement.label}</span>
+      <span class="text-ink-300 group-hover:text-ink-100 transition-colors hidden sm:inline">
+        {announcement.text}
+      </span>
+      <span class="text-ink-300 group-hover:text-ink-100 transition-colors sm:hidden">
+        Latest work
+      </span>
+      <span class="text-ink-500 group-hover:text-lime transition-colors" aria-hidden="true">→</span>
+    </a>
+  </div>
+</div>
 
 <header class="sticky top-0 z-40 border-b border-line bg-bg/85 backdrop-blur-xl">
   <nav
