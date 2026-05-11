@@ -121,19 +121,32 @@ const links = [
           <span class="text-ink-500" aria-hidden="true">↓</span>
         </a>
       </li>
+      <li>
+        <button
+          type="button"
+          id="cmdk-trigger-mobile"
+          class="flex w-full items-center justify-between py-4 text-base text-ink-100 hover:text-lime"
+          data-mobile-link
+        >
+          <span>Quick nav (⌘K)</span>
+          <span class="text-ink-500" aria-hidden="true">⌘</span>
+        </button>
+      </li>
     </ul>
   </div>
 </header>
 
 <script>
-  // Wire ⌘K trigger button to open palette
-  document.getElementById("cmdk-trigger")?.addEventListener("click", () => {
+  // Wire ⌘K trigger buttons to open palette
+  const openPalette = () => {
     const overlay = document.getElementById("cmdk-overlay");
     overlay?.classList.remove("hidden");
     overlay?.classList.add("flex");
     const input = document.getElementById("cmdk-input");
     setTimeout(() => input?.focus(), 30);
-  });
+  };
+  document.getElementById("cmdk-trigger")?.addEventListener("click", openPalette);
+  document.getElementById("cmdk-trigger-mobile")?.addEventListener("click", openPalette);
 
   const toggle = document.getElementById("mobile-menu-toggle");
   const menu = document.getElementById("mobile-menu");
