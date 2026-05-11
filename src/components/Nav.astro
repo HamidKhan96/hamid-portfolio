@@ -57,6 +57,19 @@ const links = [
     </ul>
 
     <div class="flex items-center gap-2">
+      <button
+        type="button"
+        id="cmdk-trigger"
+        class="hidden md:inline-flex items-center gap-2 border border-line hover:border-line2 hover:bg-surface-2 rounded-md px-2.5 py-1.5 text-xs text-ink-300"
+        aria-label="Open command palette"
+      >
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="7"/>
+          <path d="m21 21-4.3-4.3"/>
+        </svg>
+        <span>Quick nav</span>
+        <kbd class="ml-1 font-mono text-[10px] tracking-wider text-ink-400 border-l border-line pl-1.5">⌘K</kbd>
+      </button>
       <a href={profile.cvPath} class="btn btn-secondary text-xs hidden sm:inline-flex">
         CV
       </a>
@@ -113,6 +126,15 @@ const links = [
 </header>
 
 <script>
+  // Wire ⌘K trigger button to open palette
+  document.getElementById("cmdk-trigger")?.addEventListener("click", () => {
+    const overlay = document.getElementById("cmdk-overlay");
+    overlay?.classList.remove("hidden");
+    overlay?.classList.add("flex");
+    const input = document.getElementById("cmdk-input");
+    setTimeout(() => input?.focus(), 30);
+  });
+
   const toggle = document.getElementById("mobile-menu-toggle");
   const menu = document.getElementById("mobile-menu");
   toggle?.addEventListener("click", () => {

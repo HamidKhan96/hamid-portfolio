@@ -1,0 +1,167 @@
+---
+const commands = [
+  { id: "nav-hero", label: "Jump to hero", section: "Navigate", href: "#top", icon: "↑" },
+  { id: "nav-cases", label: "Case studies", section: "Navigate", href: "#case-studies", icon: "▸" },
+  { id: "nav-systems", label: "Systems I build", section: "Navigate", href: "#systems", icon: "▸" },
+  { id: "nav-pipeline", label: "Skills (pipeline-mapped)", section: "Navigate", href: "#pipeline", icon: "▸" },
+  { id: "nav-track", label: "Track record", section: "Navigate", href: "#track-record", icon: "▸" },
+  { id: "nav-now", label: "What I'm doing now", section: "Navigate", href: "#now", icon: "▸" },
+  { id: "nav-faq", label: "FAQ", section: "Navigate", href: "#faq", icon: "▸" },
+  { id: "nav-contact", label: "Contact", section: "Navigate", href: "#contact", icon: "▸" },
+
+  { id: "act-cv", label: "Download CV", section: "Actions", href: "/cv.pdf", icon: "↓" },
+  { id: "act-email", label: "Email Hamid", section: "Actions", href: "mailto:hamid.m.khann@gmail.com", icon: "✉" },
+  { id: "act-linkedin", label: "Open LinkedIn", section: "Actions", href: "https://www.linkedin.com/in/hamid-m-khan/", icon: "↗" },
+  { id: "act-github", label: "View source on GitHub", section: "Actions", href: "https://github.com/HamidKhan96/hamid-portfolio", icon: "↗" },
+];
+---
+
+<!-- Hidden by default. Toggled with cmd-K / ctrl-K. -->
+<div
+  id="cmdk-overlay"
+  class="fixed inset-0 z-50 hidden items-start justify-center bg-black/60 backdrop-blur-sm pt-[12vh]"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="cmdk-title"
+>
+  <div
+    class="w-full max-w-xl mx-4 border border-line bg-surface-1 rounded-lg shadow-2xl overflow-hidden"
+    id="cmdk-panel"
+  >
+    <header class="border-b border-line px-4 py-3 flex items-center gap-3">
+      <span class="text-lime text-sm" aria-hidden="true">⌘</span>
+      <input
+        id="cmdk-input"
+        type="text"
+        autocomplete="off"
+        spellcheck="false"
+        placeholder="Type to filter…"
+        class="flex-1 bg-transparent text-ink-100 text-base placeholder:text-ink-500 outline-none border-none"
+      />
+      <kbd class="font-mono text-[10px] uppercase tracking-[0.18em] text-ink-400 border border-line px-1.5 py-0.5 rounded">
+        ESC
+      </kbd>
+    </header>
+
+    <ul id="cmdk-list" class="max-h-[60vh] overflow-y-auto py-2">
+      {
+        commands.map((c, i) => (
+          <li>
+            <a
+              href={c.href}
+              data-cmdk-item
+              data-label={c.label}
+              data-section={c.section}
+              class="flex items-center justify-between gap-4 px-4 py-2.5 text-sm text-ink-200 hover:bg-surface-2 cursor-pointer"
+              target={c.href.startsWith("http") ? "_blank" : undefined}
+              rel={c.href.startsWith("http") ? "noopener noreferrer" : undefined}
+            >
+              <span class="flex items-center gap-3 min-w-0">
+                <span class="text-lime/60 w-4 text-center" aria-hidden="true">
+                  {c.icon}
+                </span>
+                <span class="truncate">{c.label}</span>
+              </span>
+              <span class="font-mono text-[10px] uppercase tracking-[0.18em] text-ink-500">
+                {c.section}
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <footer class="border-t border-line px-4 py-2.5 flex items-center justify-between text-[11px] text-ink-500 font-mono">
+      <span>
+        <kbd class="border border-line px-1 rounded">↑</kbd>
+        <kbd class="border border-line px-1 rounded ml-1">↓</kbd>
+        navigate
+      </span>
+      <span>
+        <kbd class="border border-line px-1 rounded">↵</kbd>
+        select
+      </span>
+      <span class="hidden sm:inline">⌘K to open · ESC to close</span>
+    </footer>
+  </div>
+</div>
+
+<script>
+  const overlay = document.getElementById("cmdk-overlay");
+  const input = document.getElementById("cmdk-input") as HTMLInputElement | null;
+  const list = document.getElementById("cmdk-list");
+  const items = Array.from(document.querySelectorAll("[data-cmdk-item]")) as HTMLElement[];
+  let activeIndex = 0;
+
+  function open() {
+    overlay?.classList.remove("hidden");
+    overlay?.classList.add("flex");
+    if (input) {
+      input.value = "";
+      filter("");
+      setTimeout(() => input.focus(), 30);
+    }
+    activeIndex = 0;
+    highlight();
+  }
+  function close() {
+    overlay?.classList.add("hidden");
+    overlay?.classList.remove("flex");
+  }
+  function visible() {
+    return items.filter((it) => !it.parentElement?.classList.contains("hidden"));
+  }
+  function highlight() {
+    items.forEach((it) => {
+      it.classList.remove("bg-surface-2", "text-ink-50");
+    });
+    const v = visible();
+    if (v[activeIndex]) {
+      v[activeIndex].classList.add("bg-surface-2", "text-ink-50");
+      v[activeIndex].scrollIntoView({ block: "nearest" });
+    }
+  }
+  function filter(q: string) {
+    const query = q.trim().toLowerCase();
+    items.forEach((it) => {
+      const label = (it.dataset.label || "").toLowerCase();
+      const section = (it.dataset.section || "").toLowerCase();
+      const match = !query || label.includes(query) || section.includes(query);
+      const li = it.parentElement;
+      li?.classList.toggle("hidden", !match);
+    });
+    activeIndex = 0;
+    highlight();
+  }
+
+  document.addEventListener("keydown", (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+      e.preventDefault();
+      overlay?.classList.contains("hidden") ? open() : close();
+    } else if (e.key === "Escape" && !overlay?.classList.contains("hidden")) {
+      close();
+    } else if (!overlay?.classList.contains("hidden")) {
+      if (e.key === "ArrowDown") {
+        e.preventDefault();
+        const v = visible();
+        activeIndex = Math.min(v.length - 1, activeIndex + 1);
+        highlight();
+      } else if (e.key === "ArrowUp") {
+        e.preventDefault();
+        activeIndex = Math.max(0, activeIndex - 1);
+        highlight();
+      } else if (e.key === "Enter") {
+        const v = visible();
+        v[activeIndex]?.click();
+      }
+    }
+  });
+
+  input?.addEventListener("input", () => filter(input.value));
+  overlay?.addEventListener("click", (e) => {
+    if (e.target === overlay) close();
+  });
+  items.forEach((it) => {
+    it.addEventListener("click", () => setTimeout(close, 80));
+  });
+</script>
