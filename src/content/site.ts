@@ -93,6 +93,7 @@ export const caseStudies = {
       proves:
         "I can run outbound as someone else without making them sound like a chatbot. Rare and protected skill.",
       meta: { channel: "LinkedIn", region: "Global", duration: "Ongoing" },
+      diagram: ["Voice audit", "Prompt lib", "Manual gate", "AI draft", "Human send", "Track replies"],
     },
     {
       id: "CS-002",
@@ -116,6 +117,7 @@ export const caseStudies = {
       proves:
         "Outbound is a system, not a hustle. AI is wired in where it earns its keep.",
       meta: { channel: "Email + LinkedIn", region: "US / APAC", duration: "Ongoing" },
+      diagram: ["ICP scope", "Apollo + SN pull", "Dedupe", "Claude draft", "Multi-touch", "CRM sync"],
     },
     {
       id: "CS-003",
@@ -138,6 +140,7 @@ export const caseStudies = {
       proves:
         "Build the system you want to live inside. Discipline beats motivation if discipline is cheap to execute.",
       meta: { channel: "Sheets + Gmail", region: "Personal stack", duration: "Daily use" },
+      diagram: ["Sheet schema", "Apps Script trigger", "Claude draft", "Gmail draft", "Manual send", "Auto-increment"],
     },
     {
       id: "CS-004",
@@ -160,6 +163,7 @@ export const caseStudies = {
       proves:
         "ABM works when the timing earns the message. Research the buyer before pitching the seller.",
       meta: { channel: "Multi-channel", region: "US Healthcare", duration: "6 months" },
+      diagram: ["EHR / size segments", "Decision map", "Trigger watch", "Timed outbound", "Compliance copy"],
     },
   ],
 };
