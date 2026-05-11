@@ -16,6 +16,9 @@ const { title, description } = Astro.props;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="generator" content={Astro.generator} />
+    <script is:inline>
+      document.documentElement.classList.add("has-js");
+    </script>
     <SEO title={title} description={description} />
   </head>
   <body>
