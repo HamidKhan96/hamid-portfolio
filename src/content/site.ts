@@ -8,7 +8,7 @@
 
 export const profile = {
   name: "Hamid Khan",
-  title: "GTM Engineer / Account Executive",
+  title: "GTM Engineer · Account Executive",
   location: "Lahore, Pakistan",
   email: "hamid.m.khann@gmail.com",
   linkedin: "https://www.linkedin.com/in/hamid-m-khan/",
