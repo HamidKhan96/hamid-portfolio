@@ -2,6 +2,8 @@
 
 Personal portfolio for **Hamid Khan**, GTM Engineer and Account Executive. Built as a single-page Astro site, statically rendered, deployed to Cloudflare Pages.
 
+**Live at: [hamidkhan.pages.dev](https://hamidkhan.pages.dev)**
+
 > Positioning: *I run the full sales motion and build the systems that produce the pipeline I sell from.*
 
 ---
