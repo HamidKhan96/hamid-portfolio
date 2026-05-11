@@ -23,18 +23,26 @@ const year = new Date().getFullYear();
     </div>
   </div>
 
-  <!-- ASCII signature row -->
-  <div class="container-page py-8 border-t border-line">
-    <pre class="font-mono text-[8px] sm:text-[10px] leading-tight text-ink-500 overflow-x-auto">
-{`
-  ██╗  ██╗  █████╗  ███╗   ███╗ ██╗ ██████╗      ██╗  ██╗ ██╗  ██╗  █████╗  ███╗   ██╗
+  <!-- ASCII signature row (desktop only — too wide to fit on mobile cleanly) -->
+  <div class="hidden lg:block container-page py-8 border-t border-line">
+    <pre class="font-mono text-[10px] xl:text-[11px] leading-tight text-ink-500 overflow-x-auto">
+{`  ██╗  ██╗  █████╗  ███╗   ███╗ ██╗ ██████╗      ██╗  ██╗ ██╗  ██╗  █████╗  ███╗   ██╗
   ██║  ██║ ██╔══██╗ ████╗ ████║ ██║ ██╔══██╗     ██║ ██╔╝ ██║  ██║ ██╔══██╗ ████╗  ██║
   ███████║ ███████║ ██╔████╔██║ ██║ ██║  ██║     █████╔╝  ███████║ ███████║ ██╔██╗ ██║
   ██╔══██║ ██╔══██║ ██║╚██╔╝██║ ██║ ██║  ██║     ██╔═██╗  ██╔══██║ ██╔══██║ ██║╚██╗██║
   ██║  ██║ ██║  ██║ ██║ ╚═╝ ██║ ██║ ██████╔╝     ██║  ██╗ ██║  ██║ ██║  ██║ ██║ ╚████║
-  ╚═╝  ╚═╝ ╚═╝  ╚═╝ ╚═╝     ╚═╝ ╚═╝ ╚═════╝      ╚═╝  ╚═╝ ╚═╝  ╚═╝ ╚═╝  ╚═╝ ╚═╝  ╚═══╝
-`}
+  ╚═╝  ╚═╝ ╚═╝  ╚═╝ ╚═╝     ╚═╝ ╚═╝ ╚═════╝      ╚═╝  ╚═╝ ╚═╝  ╚═╝ ╚═╝  ╚═╝ ╚═╝  ╚═══╝`}
     </pre>
+  </div>
+
+  <!-- Mobile big-name signature (alternative when ASCII is hidden) -->
+  <div class="lg:hidden container-page py-10 border-t border-line">
+    <p class="font-serif text-6xl text-ink-200 leading-none tracking-tight">
+      Hamid
+    </p>
+    <p class="font-serif italic text-6xl text-ink-300 leading-none tracking-tight mt-2">
+      Khan.
+    </p>
   </div>
 
   <!-- Bottom legal/meta row -->
