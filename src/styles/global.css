@@ -65,6 +65,7 @@
   h1, h2, h3, h4 {
     @apply text-ink-50;
     font-weight: 500;
+    font-feature-settings: "ss01", "cv01", "cv11";
   }
 
   a {
