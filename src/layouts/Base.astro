@@ -38,6 +38,18 @@ const { title, description } = Astro.props;
 
     <slot />
 
+    <!-- Back-to-top floating button (visible after scrolling past hero) -->
+    <a
+      id="back-to-top"
+      href="#top"
+      class="fixed bottom-6 right-6 z-30 inline-flex items-center justify-center h-10 w-10 rounded-full border border-line bg-surface-1 text-ink-200 hover:bg-surface-2 hover:border-lime hover:text-lime opacity-0 pointer-events-none translate-y-2 transition-all duration-200"
+      aria-label="Back to top"
+    >
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 19V5M5 12l7-7 7 7"/>
+      </svg>
+    </a>
+
     <script>
       // 1. Scroll-reveal
       const observer = new IntersectionObserver(
@@ -97,13 +109,24 @@ const { title, description } = Astro.props;
         });
       });
 
-      // 5. Scroll progress bar
+      // 5. Scroll progress bar + back-to-top
       const progress = document.getElementById("scroll-progress");
+      const backToTop = document.getElementById("back-to-top");
       const updateProgress = () => {
         const h = document.documentElement;
         const max = h.scrollHeight - h.clientHeight;
         const pct = max > 0 ? (h.scrollTop / max) * 100 : 0;
         if (progress) progress.style.width = pct + "%";
+        // Show back-to-top after 800px scroll
+        if (backToTop) {
+          const show = h.scrollTop > 800;
+          backToTop.classList.toggle("opacity-100", show);
+          backToTop.classList.toggle("opacity-0", !show);
+          backToTop.classList.toggle("pointer-events-auto", show);
+          backToTop.classList.toggle("pointer-events-none", !show);
+          backToTop.classList.toggle("translate-y-0", show);
+          backToTop.classList.toggle("translate-y-2", !show);
+        }
       };
       updateProgress();
       window.addEventListener("scroll", updateProgress, { passive: true });
