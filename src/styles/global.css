@@ -62,7 +62,7 @@
   }
 
   .section {
-    @apply py-20 md:py-28 lg:py-32;
+    @apply py-16 md:py-24 lg:py-32;
   }
 
   /* Mono section labels like "$ case_studies" */
@@ -191,7 +191,7 @@
     @apply p-6 md:p-8;
   }
   .ticket-field {
-    @apply grid gap-1.5 grid-cols-[100px_1fr] items-baseline py-2 border-t border-line/60;
+    @apply grid gap-1.5 grid-cols-[80px_1fr] sm:grid-cols-[100px_1fr] items-baseline py-2 border-t border-line/60;
   }
   .ticket-field:first-child {
     @apply border-t-0;

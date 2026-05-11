@@ -3,26 +3,60 @@ import { profile } from "../content/site";
 const year = new Date().getFullYear();
 ---
 
-<footer class="border-t border-line py-10">
-  <div class="container-page flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-    <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">
-      <span class="status-dot" aria-hidden="true"></span>
-      <span class="font-mono tracking-[0.04em] text-ink-100">hamid.khan</span>
-      <span class="text-ink-500">·</span>
-      <span class="text-ink-300">GTM Engineer & Account Executive</span>
-    </div>
-
-    <div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-ink-300">
-      <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" class="hover:text-ink-50">LinkedIn</a>
-      <a href={profile.github} target="_blank" rel="noopener noreferrer" class="hover:text-ink-50">GitHub</a>
-      <a href={`mailto:${profile.email}`} class="hover:text-ink-50">Email</a>
-      <span class="text-ink-600">·</span>
-      <span class="text-ink-500">© {year}</span>
+<footer class="border-t border-line">
+  <!-- Big closing typographic statement -->
+  <div class="container-page pt-20 pb-10 md:pt-28 md:pb-14">
+    <p class="section-label">$ end_of_file</p>
+    <h2 class="heading-serif-mix mt-5 text-balance text-display-lg max-w-4xl">
+      Let&rsquo;s build the <em>pipeline</em>.
+    </h2>
+    <div class="mt-8 flex flex-wrap items-center gap-3">
+      <a href={`mailto:${profile.email}`} class="btn btn-primary magnetic">
+        Email me
+      </a>
+      <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
+        LinkedIn ↗
+      </a>
+      <a href={profile.cvPath} class="btn btn-secondary">
+        Download CV
+      </a>
     </div>
   </div>
 
-  <div class="container-page mt-6 pt-6 border-t border-line/60">
-    <p class="font-mono text-[10px] uppercase tracking-[0.18em] text-ink-500">
+  <!-- ASCII signature row -->
+  <div class="container-page py-8 border-t border-line">
+    <pre class="font-mono text-[8px] sm:text-[10px] leading-tight text-ink-500 overflow-x-auto">
+{`
+  ██╗  ██╗  █████╗  ███╗   ███╗ ██╗ ██████╗      ██╗  ██╗ ██╗  ██╗  █████╗  ███╗   ██╗
+  ██║  ██║ ██╔══██╗ ████╗ ████║ ██║ ██╔══██╗     ██║ ██╔╝ ██║  ██║ ██╔══██╗ ████╗  ██║
+  ███████║ ███████║ ██╔████╔██║ ██║ ██║  ██║     █████╔╝  ███████║ ███████║ ██╔██╗ ██║
+  ██╔══██║ ██╔══██║ ██║╚██╔╝██║ ██║ ██║  ██║     ██╔═██╗  ██╔══██║ ██╔══██║ ██║╚██╗██║
+  ██║  ██║ ██║  ██║ ██║ ╚═╝ ██║ ██║ ██████╔╝     ██║  ██╗ ██║  ██║ ██║  ██║ ██║ ╚████║
+  ╚═╝  ╚═╝ ╚═╝  ╚═╝ ╚═╝     ╚═╝ ╚═╝ ╚═════╝      ╚═╝  ╚═╝ ╚═╝  ╚═╝ ╚═╝  ╚═╝ ╚═╝  ╚═══╝
+`}
+    </pre>
+  </div>
+
+  <!-- Bottom legal/meta row -->
+  <div class="container-page py-6 border-t border-line">
+    <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+      <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span class="font-mono tracking-[0.04em] text-ink-100">hamid.khan</span>
+        <span class="text-ink-500">·</span>
+        <span class="text-ink-300">GTM Engineer & Account Executive</span>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-ink-300">
+        <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" class="hover:text-ink-50">LinkedIn</a>
+        <a href={profile.github} target="_blank" rel="noopener noreferrer" class="hover:text-ink-50">GitHub</a>
+        <a href={`mailto:${profile.email}`} class="hover:text-ink-50">Email</a>
+        <span class="text-ink-600">·</span>
+        <span class="text-ink-500">© {year}</span>
+      </div>
+    </div>
+
+    <p class="mt-5 font-mono text-[10px] uppercase tracking-[0.18em] text-ink-500">
       // Built in Astro · Deployed on Cloudflare Pages · Coded by Hamid
     </p>
   </div>

@@ -1,0 +1,74 @@
+---
+// A typewriter-style "live activity" feed. Static items, animated reveal,
+// then a slow rotation that swaps items in/out.
+const events = [
+  { stage: "OUTREACH", text: "ICP run · 142 accounts enriched via Apollo + Sales Nav" },
+  { stage: "SOURCING", text: "Trigger event detected: Series B announcement at target account" },
+  { stage: "DRAFT", text: "Claude draft generated · voice-matched first touch · CS-002 cohort" },
+  { stage: "SEND", text: "47 emails queued via Gmail API · staggered 90s intervals" },
+  { stage: "REPLY", text: "3 positive replies · 1 meeting booked · 2 nurture" },
+  { stage: "SYNC", text: "Pipeline updated in CRM · next-action dates auto-incremented" },
+  { stage: "FOLLOWUP", text: "Day-11 follow-up drafted for 12 non-responders · pending review" },
+  { stage: "REPORT", text: "Weekly cohort report exported · sent to Sheet dashboard" },
+];
+---
+
+<section
+  id="live-feed"
+  aria-label="Live activity feed"
+  class="section border-t border-line bg-surface-1/30"
+>
+  <div class="container-page">
+    <div class="reveal grid gap-6 lg:grid-cols-12 lg:gap-12 mb-12">
+      <div class="lg:col-span-7">
+        <p class="section-label">$ live_feed</p>
+        <h2 class="heading-serif-mix mt-5 text-balance text-display-lg">
+          A day in the <em>pipeline</em>.
+        </h2>
+      </div>
+      <p class="lg:col-span-5 self-end text-base text-ink-200 max-w-prose">
+        A rough sketch of what the outbound system produces on a working day. Anonymized signals, real workflow shape.
+      </p>
+    </div>
+
+    <div class="reveal card spotlight overflow-hidden">
+      <header class="flex items-center justify-between border-b border-line bg-surface-2/40 px-5 py-3">
+        <div class="flex items-center gap-3">
+          <div class="flex gap-1.5">
+            <span class="inline-block h-2.5 w-2.5 rounded-full bg-ink-500" />
+            <span class="inline-block h-2.5 w-2.5 rounded-full bg-ink-500" />
+            <span class="inline-block h-2.5 w-2.5 rounded-full bg-ink-500" />
+          </div>
+          <span class="font-mono text-[10px] uppercase tracking-[0.18em] text-ink-400">
+            // outbound_system.log
+          </span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="inline-block h-2 w-2 rounded-full bg-lime animate-[pulseDot_2s_ease-in-out_infinite]" />
+          <span class="font-mono text-[10px] uppercase tracking-[0.18em] text-lime">LIVE</span>
+        </div>
+      </header>
+
+      <ol class="divide-y divide-line/60 font-mono text-sm">
+        {
+          events.map((e, i) => (
+            <li
+              class="reveal grid grid-cols-[80px_140px_1fr] items-center gap-4 px-5 py-3.5 hover:bg-surface-2/40 transition-colors"
+              style={`transition-delay: ${i * 60}ms;`}
+            >
+              <span class="text-ink-500 tabular-nums">
+                {`${String(9 + Math.floor(i / 2)).padStart(2, "0")}:${String((i % 4) * 12 + 7).padStart(2, "0")}`}
+              </span>
+              <span class="text-[10px] uppercase tracking-[0.18em] text-lime">
+                {e.stage}
+              </span>
+              <span class="text-ink-200 text-xs md:text-sm">
+                {e.text}
+              </span>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+  </div>
+</section>
