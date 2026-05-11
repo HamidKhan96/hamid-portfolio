@@ -20,12 +20,18 @@ import { resources } from "../content/site";
       {
         resources.items.map((r, i) => (
           <li
-            class="reveal spotlight bg-surface-1 hover:bg-surface-2 transition-colors duration-200 p-6"
+            class={`reveal spotlight bg-surface-1 hover:bg-surface-2 transition-colors duration-200 p-6 ${i === 0 ? "lg:col-span-1 ring-1 ring-inset ring-lime/15" : ""}`}
             style={`transition-delay: ${i * 40}ms;`}
           >
             <div class="flex items-start justify-between gap-4">
               <h3 class="text-base font-medium text-ink-50">{r.title}</h3>
               {!r.available && <span class="tag">Soon</span>}
+              {i === 0 && (
+                <span class="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.16em] text-lime">
+                  <span class="inline-block h-1.5 w-1.5 rounded-full bg-lime" />
+                  live
+                </span>
+              )}
             </div>
             <p class="mt-3 text-sm text-ink-300 min-h-[42px]">{r.description}</p>
             <a
