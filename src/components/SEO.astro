@@ -1,0 +1,82 @@
+---
+import { seo, profile } from "../content/site";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = seo.title, description = seo.description } = Astro.props;
+const canonical = new URL(Astro.url.pathname, seo.url).toString();
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: profile.name,
+  jobTitle: "GTM Engineer and Account Executive",
+  url: seo.url,
+  email: `mailto:${profile.email}`,
+  sameAs: [profile.linkedin, profile.github],
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Lahore",
+    addressCountry: "PK",
+  },
+  knowsAbout: [
+    "B2B Sales",
+    "Outbound Prospecting",
+    "Account Executive",
+    "GTM Engineering",
+    "AI Outbound Automation",
+    "CRM Hygiene",
+    "Account Based Marketing",
+    "Executive LinkedIn Outreach",
+  ],
+};
+---
+
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonical} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={new URL(seo.ogImage, seo.url).toString()} />
+<meta property="og:site_name" content={profile.name} />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={new URL(seo.ogImage, seo.url).toString()} />
+
+<meta name="theme-color" content="#0A0A0B" />
+<meta name="author" content={profile.name} />
+<meta name="robots" content="index, follow" />
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<link rel="alternate icon" href="/favicon.ico" />
+
+<script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
+
+<!--
+  Analytics placeholder. Paste exactly one of the snippets below after launch.
+
+  Cloudflare Web Analytics (preferred, no cookies, free):
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+    data-cf-beacon='{"token":"REPLACE_WITH_TOKEN"}'></script>
+
+  Plausible:
+  <script defer data-domain="hamidkhan.pages.dev"
+    src="https://plausible.io/js/script.js"></script>
+
+  Google Analytics 4:
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-REPLACE"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-REPLACE');
+  </script>
+-->

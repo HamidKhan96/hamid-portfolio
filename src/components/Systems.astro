@@ -1,0 +1,41 @@
+---
+import { systems } from "../content/site";
+---
+
+<section id="systems" class="section border-t border-white/[0.05]">
+  <div class="container-page">
+    <div class="reveal max-w-3xl">
+      <p class="eyebrow">What I build</p>
+      <h2 class="mt-4 text-balance text-3xl font-medium leading-tight tracking-tight md:text-4xl">
+        Six systems behind the pipeline.
+      </h2>
+      <p class="mt-6 text-lg text-ink-200">
+        These are the playbooks and workflows I run, not job descriptions. Each one is a repeatable system, not a one off.
+      </p>
+    </div>
+
+    <ul class="mt-16 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+      {
+        systems.map((s, i) => (
+          <li class="reveal card flex flex-col">
+            <div class="flex items-center justify-between">
+              <span class="font-mono text-xs text-ink-400">
+                0{i + 1}
+              </span>
+              <span class="inline-block h-2 w-2 rounded-full bg-accent/60" />
+            </div>
+            <h3 class="mt-6 text-xl font-medium leading-snug text-ink-50">
+              {s.title}
+            </h3>
+            <p class="mt-3 flex-1 text-sm leading-relaxed text-ink-200">
+              {s.blurb}
+            </p>
+            <ul class="mt-6 flex flex-wrap gap-1.5">
+              {s.tools.map((t) => <li class="tag">{t}</li>)}
+            </ul>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

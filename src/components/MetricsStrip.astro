@@ -1,0 +1,20 @@
+---
+import { metrics } from "../content/site";
+---
+
+<section aria-label="Credibility metrics" class="border-y border-white/[0.05] bg-ink-900/30">
+  <div class="container-page">
+    <ul class="grid grid-cols-2 divide-y divide-white/[0.05] md:grid-cols-3 md:divide-y-0 md:divide-x lg:grid-cols-6">
+      {
+        metrics.map((m) => (
+          <li class="reveal flex flex-col gap-2 px-2 py-8 first:pl-0 md:px-6 md:py-10">
+            <span class="font-mono text-2xl font-medium text-accent md:text-3xl">{m.value}</span>
+            <span class="text-xs uppercase tracking-wider text-ink-300 md:text-sm md:normal-case md:tracking-normal">
+              {m.label}
+            </span>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
