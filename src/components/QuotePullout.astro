@@ -1,0 +1,31 @@
+---
+const quote = {
+  text:
+    "The pipeline is the proof. Everything else is a story I am asking the buyer to trust.",
+  attribution: "operating note · 2026",
+};
+---
+
+<section
+  aria-label="Pull quote"
+  class="border-t border-line bg-bg"
+>
+  <div class="container-page py-20 md:py-28">
+    <figure class="reveal grid gap-8 lg:grid-cols-12 lg:gap-12 items-start max-w-5xl mx-auto">
+      <span
+        aria-hidden="true"
+        class="lg:col-span-1 font-serif text-7xl md:text-8xl text-lime leading-none"
+      >
+        &ldquo;
+      </span>
+      <blockquote class="lg:col-span-11">
+        <p class="font-serif text-3xl md:text-4xl lg:text-5xl text-ink-50 leading-tight tracking-tight text-balance">
+          {quote.text}
+        </p>
+        <figcaption class="mt-6 font-mono text-[11px] uppercase tracking-[0.18em] text-ink-400">
+          // {quote.attribution}
+        </figcaption>
+      </blockquote>
+    </figure>
+  </div>
+</section>
