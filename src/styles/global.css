@@ -97,6 +97,11 @@
   .section-label::before {
     content: "▸";
     @apply text-lime;
+    transition: transform 200ms ease;
+    display: inline-block;
+  }
+  .section-label:hover::before {
+    transform: translateX(2px);
   }
 
   /* Editorial heading with serif italic accent */
