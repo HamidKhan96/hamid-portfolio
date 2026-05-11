@@ -1,10 +1,38 @@
-# Hamid Khan — Portfolio Site
+# hamid.khan — portfolio
 
-Personal portfolio for **Hamid Khan**, GTM Engineer and Account Executive. Built as a single-page Astro site, statically rendered, deployed to Cloudflare Pages.
+Personal portfolio for **Hamid Khan**, GTM Engineer and Account Executive.
+Static-rendered Astro single-page site, deployed to Cloudflare Pages.
 
-**Live at: [hamidkhan.pages.dev](https://hamidkhan.pages.dev)**
+**Live: [hamidkhan.pages.dev](https://hamidkhan.pages.dev)**
 
-> Positioning: *I run the full sales motion and build the systems that produce the pipeline I sell from.*
+> *"The pipeline is the proof. Everything else is a story I am asking the buyer to trust."*
+
+## What's on the page
+
+- Hero with serif/sans display headline, live status pill, rotating value-prop tagline
+- Animated stats counters + serif tool marquee
+- Sample pipeline kanban (anonymized accounts)
+- About story (engineering to GTM)
+- Six operating principles synthesized from the modern sales canon (Braun, Miner, Voss, Iannarino, Blount, Hunter, Ross, Bertuzzi)
+- Editorial pull quote
+- Four anonymized case studies as CRM-style ticket cards (with system-flow diagrams)
+- Live activity feed (terminal-styled log)
+- Six systems I build, listed compactly
+- Skills mapped to the sales cycle (Sourcing → Outreach → Qualification → Discovery → Pipeline → Automation)
+- Track record across five roles (current + past)
+- Now block (shipping / reading / studying / building, refreshed monthly)
+- FAQ for hiring managers
+- Resources (CV + playbooks on request)
+- Contact card with online indicator
+- ⌘K command palette · sticky right-rail section indicator · top scroll-progress bar · mobile drawer
+
+## Stack
+
+- **Astro 4** with static output, zero JS shipped by default (a small bundle for the IntersectionObserver, spotlight, tilt, magnetic, counters)
+- **Tailwind CSS 3** with custom palette (`ink-*` neutrals + `lime` accent)
+- **TypeScript** for content typing
+- **Self-hosted fonts**: Inter Variable + Instrument Serif + JetBrains Mono via `@fontsource`
+- **No CMS, no backend, no database.** All copy lives in `src/content/site.ts`
 
 ---
 
