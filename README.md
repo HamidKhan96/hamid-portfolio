@@ -26,6 +26,10 @@ Static-rendered Astro single-page site, deployed to Cloudflare Pages.
 - Contact card with online indicator
 - ⌘K command palette · sticky right-rail section indicator · top scroll-progress bar · mobile drawer
 
+## Iteration log
+
+Built and refined across 40 deploy cycles. Each cycle = QA → fix or refine → push → next cycle. See `git log` for the full record.
+
 ## Stack
 
 - **Astro 4** with static output, zero JS shipped by default (a small bundle for the IntersectionObserver, spotlight, tilt, magnetic, counters)
