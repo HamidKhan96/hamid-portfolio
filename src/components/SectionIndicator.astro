@@ -1,0 +1,79 @@
+---
+const sections = [
+  { id: "top", label: "Hero" },
+  { id: "about", label: "About" },
+  { id: "principles", label: "Principles" },
+  { id: "case-studies", label: "Case studies" },
+  { id: "live-feed", label: "Live feed" },
+  { id: "systems", label: "Systems" },
+  { id: "pipeline", label: "Skills" },
+  { id: "track-record", label: "Track record" },
+  { id: "now", label: "Now" },
+  { id: "resources", label: "Resources" },
+  { id: "contact", label: "Contact" },
+];
+---
+
+<aside
+  aria-label="Section navigator"
+  class="fixed right-6 top-1/2 -translate-y-1/2 z-30 hidden xl:block pointer-events-none"
+>
+  <ol class="flex flex-col gap-2 pointer-events-auto">
+    {
+      sections.map((s) => (
+        <li>
+          <a
+            href={`#${s.id}`}
+            data-section-link={s.id}
+            class="group flex items-center gap-3 justify-end opacity-50 hover:opacity-100 transition-opacity"
+            aria-label={`Jump to ${s.label}`}
+          >
+            <span class="font-mono text-[10px] uppercase tracking-[0.16em] text-ink-300 opacity-0 group-hover:opacity-100 transition-opacity">
+              {s.label}
+            </span>
+            <span
+              data-section-dot
+              class="inline-block h-1.5 w-6 bg-ink-500 transition-all duration-300"
+            />
+          </a>
+        </li>
+      ))
+    }
+  </ol>
+</aside>
+
+<script>
+  const links = Array.from(document.querySelectorAll("[data-section-link]"));
+  const sectionMap = new Map();
+  links.forEach((link) => {
+    const id = link.dataset.sectionLink;
+    if (id) sectionMap.set(id, link);
+  });
+
+  const setActive = (id) => {
+    links.forEach((l) => {
+      const dot = l.querySelector("[data-section-dot]");
+      const isActive = l.dataset.sectionLink === id;
+      l.classList.toggle("opacity-100", isActive);
+      l.classList.toggle("opacity-50", !isActive);
+      dot?.classList.toggle("bg-lime", isActive);
+      dot?.classList.toggle("w-10", isActive);
+      dot?.classList.toggle("bg-ink-500", !isActive);
+      dot?.classList.toggle("w-6", !isActive);
+    });
+  };
+
+  const sectionObs = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) setActive(entry.target.id);
+      });
+    },
+    { rootMargin: "-40% 0px -45% 0px", threshold: 0 }
+  );
+
+  sectionMap.forEach((_link, id) => {
+    const el = document.getElementById(id);
+    if (el) sectionObs.observe(el);
+  });
+</script>
