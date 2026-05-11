@@ -112,11 +112,14 @@
   .heading-serif-mix em {
     @apply font-serif font-normal;
     font-style: italic;
-    color: rgba(250, 250, 247, 0.95);
-    letter-spacing: -0.01em;
+    color: rgba(250, 250, 247, 0.96);
+    letter-spacing: -0.015em;
     font-feature-settings: "ss01";
     padding-inline-start: 0.05em;
     padding-inline-end: 0.04em;
+    /* Optical balance: serif italic appears larger than sans at same em,
+       slightly trim for cross-typeface visual harmony. */
+    font-size: 0.96em;
   }
 
   /* Mono key/value display used in status pills and meta rows */
