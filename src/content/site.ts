@@ -383,8 +383,10 @@ export const trackRecord = {
 };
 
 export const resources = {
-  label: "$ download",
+  label: "$ resources",
   heading: "Take what is useful.",
+  intro:
+    "The CV is live. The playbooks I run with go out by email when requested. No gating, no funnel.",
   items: [
     {
       title: "CV (PDF)",
