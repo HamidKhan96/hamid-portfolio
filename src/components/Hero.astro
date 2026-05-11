@@ -65,11 +65,19 @@ const headlineParts = parseHeadline(hero.headline);
       }
     </h1>
 
-    <!-- Subhead + CTAs -->
+    <!-- Subhead with rotating value-prop typewriter + CTAs -->
     <div class="reveal mt-10 grid gap-10 lg:grid-cols-12" style="transition-delay: 160ms;">
-      <p class="text-lg leading-relaxed text-ink-200 lg:col-span-7 max-w-2xl">
-        {hero.subhead}
-      </p>
+      <div class="lg:col-span-7 max-w-2xl">
+        <p class="text-lg leading-relaxed text-ink-200">
+          {hero.subhead}
+        </p>
+        <p class="mt-5 font-mono text-[12px] uppercase tracking-[0.18em] text-ink-400 flex items-center gap-3">
+          <span class="text-lime">▸</span>
+          <span class="text-ink-500">I build</span>
+          <span id="rotator" class="text-lime min-w-[180px] inline-block">outbound campaigns</span>
+          <span class="inline-block w-[2px] h-3 bg-lime animate-[pulseDot_1s_ease-in-out_infinite]" aria-hidden="true"></span>
+        </p>
+      </div>
       <div class="lg:col-span-5 flex flex-wrap items-start gap-3 lg:justify-end">
         <a href={hero.ctas.primary.href} class="btn btn-primary magnetic">
           {hero.ctas.primary.label}
@@ -99,7 +107,7 @@ const headlineParts = parseHeadline(hero.headline);
       }
     </div>
 
-    <div class="reveal mt-14 md:mt-20 flex flex-wrap items-center gap-3 md:gap-5" style="transition-delay: 320ms;">
+    <div class="reveal mt-14 md:mt-20 flex flex-wrap items-center gap-3 md:gap-5" style="transition-delay: 320ms;" id="hero-credentials">
       <span class="font-mono text-[10px] uppercase tracking-[0.18em] text-ink-500">
         // shipped at
       </span>
@@ -111,3 +119,27 @@ const headlineParts = parseHeadline(hero.headline);
     </div>
   </div>
 </section>
+
+<script>
+  const rotator = document.getElementById("rotator");
+  const phrases = [
+    "outbound campaigns",
+    "executive proxy outreach",
+    "AI personalization loops",
+    "CRM follow-up systems",
+    "ICP research frameworks",
+    "pipeline that produces pipeline",
+  ];
+  let i = 0;
+  if (rotator) {
+    setInterval(() => {
+      i = (i + 1) % phrases.length;
+      rotator.style.opacity = "0";
+      setTimeout(() => {
+        rotator.textContent = phrases[i];
+        rotator.style.opacity = "1";
+      }, 220);
+    }, 2800);
+    rotator.style.transition = "opacity 220ms ease";
+  }
+</script>
