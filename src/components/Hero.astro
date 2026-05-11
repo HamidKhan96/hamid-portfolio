@@ -83,7 +83,7 @@ const headlineParts = parseHeadline(hero.headline);
       </div>
     </div>
 
-    <!-- Tertiary links -->
+    <!-- Tertiary links + experience credentials -->
     <div class="reveal mt-8 flex flex-wrap items-center gap-x-6 gap-y-2" style="transition-delay: 240ms;">
       {
         hero.ctas.tertiary.map((l) => (
@@ -97,6 +97,17 @@ const headlineParts = parseHeadline(hero.headline);
           </a>
         ))
       }
+    </div>
+
+    <div class="reveal mt-14 md:mt-20 flex flex-wrap items-center gap-3 md:gap-5" style="transition-delay: 320ms;">
+      <span class="font-mono text-[10px] uppercase tracking-[0.18em] text-ink-500">
+        // shipped at
+      </span>
+      <span class="tag">MUST Company</span>
+      <span class="tag">Bydrec</span>
+      <span class="tag">Devsinc</span>
+      <span class="tag">Roshan Packages</span>
+      <span class="tag">NCRA</span>
     </div>
   </div>
 </section>

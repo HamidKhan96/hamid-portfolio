@@ -439,7 +439,7 @@ export const contact = {
 };
 
 export const seo = {
-  title: "Hamid Khan — GTM Engineer & Account Executive",
+  title: "Hamid Khan · GTM Engineer & Account Executive",
   description:
     "Hamid Khan builds AI-powered outbound systems, CRM workflows, and executive LinkedIn playbooks for B2B tech sales. Three years full-cycle SDR to AE.",
   ogImage: "/og-image.svg",
