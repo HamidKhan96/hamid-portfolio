@@ -1,0 +1,105 @@
+---
+// A semi-realistic CRM pipeline kanban shown as a visual "this is what I build".
+// All names anonymized to industry archetypes; never real prospects.
+const columns = [
+  {
+    stage: "Sourcing",
+    count: 142,
+    color: "text-ink-300",
+    cards: [
+      { co: "Series B HR-tech", role: "VP Sales", tags: ["US", "50-200 FTE"] },
+      { co: "EU Fintech", role: "Head of GTM", tags: ["EU", "Series A"] },
+      { co: "DevTools SaaS", role: "Co-founder", tags: ["US", "Seed"] },
+    ],
+  },
+  {
+    stage: "Outreach",
+    count: 38,
+    color: "text-ink-200",
+    cards: [
+      { co: "APAC AI startup", role: "CEO", tags: ["LI · Day 3"] },
+      { co: "US HealthTech", role: "CTO", tags: ["Email · Day 7"] },
+      { co: "LATAM Devshop", role: "CRO", tags: ["LI · Day 11"] },
+    ],
+  },
+  {
+    stage: "Qualified",
+    count: 12,
+    color: "text-lime",
+    cards: [
+      { co: "Series C MarTech", role: "VP Sales", tags: ["Meeting booked"] },
+      { co: "US Insurance SaaS", role: "Head of Sales Ops", tags: ["Demo Tue"] },
+    ],
+  },
+  {
+    stage: "Proposal",
+    count: 4,
+    color: "text-lime",
+    cards: [
+      { co: "EMEA Cybersec", role: "Co-founder", tags: ["Proposal sent"] },
+    ],
+  },
+];
+---
+
+<section
+  aria-label="Sample pipeline visualization"
+  class="border-b border-line bg-surface-1/30"
+>
+  <div class="container-page py-14 md:py-20">
+    <div class="reveal flex flex-wrap items-end justify-between gap-4 mb-8 md:mb-10">
+      <div>
+        <p class="section-label">// sample pipeline</p>
+        <h3 class="heading-serif-mix mt-4 text-2xl md:text-3xl text-balance">
+          A pipeline I might run for you. <em>Anonymized.</em>
+        </h3>
+      </div>
+      <p class="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-400">
+        Updated: live · synced via Sheets + Apps Script
+      </p>
+    </div>
+
+    <div class="reveal card overflow-hidden">
+      <div class="grid divide-y divide-line/60 md:grid-cols-4 md:divide-y-0 md:divide-x">
+        {
+          columns.map((col, i) => (
+            <div class="p-4 md:p-5 min-h-[280px]" style={`transition-delay: ${i * 80}ms;`}>
+              <header class="flex items-center justify-between mb-4">
+                <h4 class={`font-mono text-[11px] uppercase tracking-[0.18em] ${col.color}`}>
+                  {col.stage}
+                </h4>
+                <span class="font-mono text-[11px] text-ink-400 tabular-nums">
+                  {col.count}
+                </span>
+              </header>
+              <ul class="space-y-2">
+                {col.cards.map((c) => (
+                  <li class="border border-line bg-surface-2/60 rounded-md p-3 hover:border-line2 hover:bg-surface-2 transition-colors duration-200 cursor-default">
+                    <p class="text-sm text-ink-100 leading-tight">{c.co}</p>
+                    <p class="mt-0.5 text-[11px] text-ink-400">{c.role}</p>
+                    <ul class="mt-2 flex flex-wrap gap-1">
+                      {c.tags.map((t) => (
+                        <li class="inline-flex items-center bg-surface-3 px-1.5 py-0.5 font-mono text-[9px] uppercase tracking-wider text-ink-300 rounded-sm">
+                          {t}
+                        </li>
+                      ))}
+                    </ul>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
+      </div>
+
+      <footer class="border-t border-line bg-surface-2/40 flex flex-wrap items-center justify-between gap-3 px-5 py-3">
+        <p class="font-mono text-[10px] uppercase tracking-[0.18em] text-ink-400">
+          // 4-stage pipeline · 196 accounts under management · cohort 26-Q2
+        </p>
+        <p class="font-mono text-[10px] uppercase tracking-[0.18em] text-lime">
+          ● auto-sync running
+        </p>
+      </footer>
+    </div>
+  </div>
+</section>
