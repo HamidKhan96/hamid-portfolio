@@ -39,6 +39,14 @@ const columns = [
       { co: "EMEA Cybersec", role: "Co-founder", tags: ["Proposal sent"] },
     ],
   },
+  {
+    stage: "Closed",
+    count: 1,
+    color: "text-lime",
+    cards: [
+      { co: "Series B DevTools", role: "VP Sales", tags: ["Won · Q2"] },
+    ],
+  },
 ];
 ---
 
@@ -60,7 +68,7 @@ const columns = [
     </div>
 
     <div class="reveal card overflow-hidden">
-      <div class="grid divide-y divide-line/60 md:grid-cols-4 md:divide-y-0 md:divide-x">
+      <div class="grid divide-y divide-line/60 md:grid-cols-5 md:divide-y-0 md:divide-x">
         {
           columns.map((col, i) => (
             <div class="p-4 md:p-5 min-h-[280px]" style={`transition-delay: ${i * 80}ms;`}>
@@ -94,7 +102,7 @@ const columns = [
 
       <footer class="border-t border-line bg-surface-2/40 flex flex-wrap items-center justify-between gap-3 px-5 py-3">
         <p class="font-mono text-[10px] uppercase tracking-[0.18em] text-ink-400">
-          // 4-stage pipeline · 196 accounts under management · cohort 26-Q2
+          // 5-stage pipeline · 197 accounts under management · cohort 26-Q2
         </p>
         <p class="font-mono text-[10px] uppercase tracking-[0.18em] text-lime flex items-center gap-2">
           <span class="inline-block h-1.5 w-1.5 rounded-full bg-lime animate-[pulseDot_2s_ease-in-out_infinite]" aria-hidden="true"></span>
