@@ -57,7 +57,7 @@ export default {
       },
       animation: {
         "pulse-dot": "pulseDot 2s ease-in-out infinite",
-        ticker: "ticker 40s linear infinite",
+        ticker: "ticker 60s linear infinite",
       },
       keyframes: {
         pulseDot: {
