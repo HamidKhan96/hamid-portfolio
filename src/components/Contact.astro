@@ -13,7 +13,7 @@ import { contact } from "../content/site";
         <p class="mt-6 text-lg text-ink-200 max-w-xl">{contact.subhead}</p>
 
         <div class="mt-10 flex flex-wrap items-center gap-3">
-          <a href={`mailto:${contact.email}`} class="btn btn-primary">
+          <a href={`mailto:${contact.email}`} class="btn btn-primary magnetic">
             Email me
           </a>
           <a
@@ -25,13 +25,23 @@ import { contact } from "../content/site";
             LinkedIn ↗
           </a>
         </div>
+
+        <p class="mt-8 font-mono text-[10px] uppercase tracking-[0.18em] text-ink-500">
+          // I read every email. Reply window: 24 hours, weekdays.
+        </p>
       </div>
 
       <aside class="lg:col-span-5 reveal" style="transition-delay: 80ms;">
-        <div class="card p-7">
-          <p class="font-mono text-[10px] uppercase tracking-[0.18em] text-ink-400 mb-5">
-            // contact_card.txt
-          </p>
+        <div class="card spotlight p-7">
+          <div class="flex items-center justify-between mb-5">
+            <p class="font-mono text-[10px] uppercase tracking-[0.18em] text-ink-400">
+              // contact_card.txt
+            </p>
+            <span class="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-lime">
+              <span class="inline-block h-1.5 w-1.5 rounded-full bg-lime animate-[pulseDot_2s_ease-in-out_infinite]"></span>
+              online
+            </span>
+          </div>
           <dl class="space-y-5">
             <div>
               <dt class="meta-key">Email</dt>
