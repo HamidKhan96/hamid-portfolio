@@ -2,14 +2,15 @@
 // A typewriter-style "live activity" feed. Static items, animated reveal,
 // then a slow rotation that swaps items in/out.
 const events = [
-  { stage: "OUTREACH", text: "ICP run · 142 accounts enriched via Apollo + Sales Nav" },
-  { stage: "SOURCING", text: "Trigger event detected: Series B announcement at target account" },
-  { stage: "DRAFT", text: "Claude draft generated · voice-matched first touch · CS-002 cohort" },
-  { stage: "SEND", text: "47 emails queued via Gmail API · staggered 90s intervals" },
-  { stage: "REPLY", text: "3 positive replies · 1 meeting booked · 2 nurture" },
-  { stage: "SYNC", text: "Pipeline updated in CRM · next-action dates auto-incremented" },
-  { stage: "FOLLOWUP", text: "Day-11 follow-up drafted for 12 non-responders · pending review" },
-  { stage: "REPORT", text: "Weekly cohort report exported · sent to Sheet dashboard" },
+  { t: "08:14", stage: "SOURCING", text: "Trigger detected · Series B funding announcement at target account" },
+  { t: "08:42", stage: "ENRICH", text: "ICP run · 142 accounts enriched via Apollo + Sales Navigator" },
+  { t: "09:07", stage: "DRAFT", text: "Claude generated voice-matched first touch · cohort CS-002" },
+  { t: "09:33", stage: "QA", text: "Manual review pass on 47 drafts · 3 rewritten, 44 approved" },
+  { t: "10:05", stage: "SEND", text: "47 emails queued via Gmail API · 90s staggered intervals" },
+  { t: "11:48", stage: "REPLY", text: "3 positive replies · 1 meeting booked Tue 2pm · 2 added to nurture" },
+  { t: "14:22", stage: "FOLLOWUP", text: "Day-11 follow-up drafted for 12 non-responders · pending review" },
+  { t: "16:10", stage: "SYNC", text: "Pipeline written to CRM · next-action dates auto-incremented" },
+  { t: "17:35", stage: "REPORT", text: "Daily cohort report exported · pasted into Sheet dashboard" },
 ];
 ---
 
@@ -57,7 +58,7 @@ const events = [
               style={`transition-delay: ${i * 60}ms;`}
             >
               <span class="text-ink-500 tabular-nums text-xs md:text-sm">
-                {`${String(9 + Math.floor(i / 2)).padStart(2, "0")}:${String((i % 4) * 12 + 7).padStart(2, "0")}`}
+                {e.t}
               </span>
               <span class="text-[10px] uppercase tracking-[0.18em] text-lime">
                 {e.stage}
