@@ -5,6 +5,14 @@ export default {
   theme: {
     extend: {
       colors: {
+        // Paper (default light) palette
+        paper: {
+          DEFAULT: "#F6F2E9",   // page background — warm cream
+          deep: "#EFE8D8",      // recessed cards / sections that need slight contrast
+          rule: "rgba(20, 18, 14, 0.10)",
+          rule2: "rgba(20, 18, 14, 0.18)",
+        },
+        // Dark stays for breakout sections (LiveFeed, PipelineMock, CaseStudies)
         bg: "#0A0A0A",
         surface: {
           1: "#0F0F0F",
@@ -13,20 +21,37 @@ export default {
         },
         line: "rgba(255, 255, 255, 0.08)",
         line2: "rgba(255, 255, 255, 0.14)",
+        // Ink reads on paper (warm near-black)
         ink: {
-          50: "#FAFAF7",
-          100: "#EFEFEC",
+          50: "#FAFAF7",   // pure light, on dark
+          100: "#EFEFEC",  // light text on dark
           200: "#C9C9C5",
           300: "#9A9A95",
           400: "#6E6E69",
           500: "#4A4A46",
           600: "#2E2E2C",
         },
+        // Pen reads on paper (warm dark)
+        pen: {
+          900: "#16140F",  // primary text on paper
+          800: "#2A271F",
+          700: "#3F3B30",
+          500: "#6B6557",
+          400: "#8C8678",
+          300: "#A8A294",
+        },
         lime: {
           DEFAULT: "#B9FF66",
           dim: "#9DE83F",
+          deep: "#86C72E",
           glow: "rgba(185, 255, 102, 0.16)",
         },
+        sand: {
+          DEFAULT: "#E5DCC4",
+          deep: "#D6C9A6",
+        },
+        sage: "#C7D7B5",
+        peach: "#F4D9B8",
       },
       fontFamily: {
         serif: ['"Instrument Serif"', "ui-serif", "Georgia", "serif"],
@@ -34,12 +59,14 @@ export default {
         mono: ['"JetBrains Mono"', "ui-monospace", "monospace"],
       },
       fontSize: {
-        "display-xl": ["clamp(3.5rem, 8vw, 7.5rem)", { lineHeight: "0.95", letterSpacing: "-0.04em" }],
-        "display-lg": ["clamp(2.5rem, 5vw, 4.5rem)", { lineHeight: "1", letterSpacing: "-0.035em" }],
+        // Larger display sizes — references push 100-160pt; we go bold but readable.
+        "display-2xl": ["clamp(4rem, 13vw, 11rem)", { lineHeight: "0.92", letterSpacing: "-0.045em" }],
+        "display-xl": ["clamp(3.5rem, 9vw, 8rem)", { lineHeight: "0.94", letterSpacing: "-0.04em" }],
+        "display-lg": ["clamp(2.5rem, 5.5vw, 4.75rem)", { lineHeight: "1", letterSpacing: "-0.035em" }],
         "display-md": ["clamp(2rem, 3.5vw, 3rem)", { lineHeight: "1.05", letterSpacing: "-0.03em" }],
       },
       letterSpacing: {
-        tightest: "-0.04em",
+        tightest: "-0.045em",
       },
       maxWidth: {
         container: "1240px",
@@ -50,6 +77,8 @@ export default {
           "radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px)",
         grid:
           "linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px)",
+        "dots-paper":
+          "radial-gradient(rgba(20,18,14,0.06) 1px, transparent 1px)",
       },
       backgroundSize: {
         dots: "24px 24px",

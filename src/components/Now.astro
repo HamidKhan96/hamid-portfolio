@@ -22,44 +22,44 @@ const now = {
 
 <section
   id="now"
-  class="section border-t border-line"
+  class="section"
 >
   <div class="container-page">
     <div class="reveal grid gap-6 lg:grid-cols-12 lg:gap-12 mb-12">
       <div class="lg:col-span-7">
-        <p class="section-label">$ now</p>
-        <h2 class="heading-serif-mix mt-5 text-balance text-display-lg">
+        <p class="section-label"><span class="font-mono">09 / Now</span></p>
+        <h2 class="heading-serif-mix mt-6 text-balance text-display-lg">
           What I'm <em>doing</em> right now.
         </h2>
       </div>
-      <p class="lg:col-span-5 self-end text-base text-ink-200 max-w-prose">
+      <p class="lg:col-span-5 self-end text-base text-pen-700 max-w-prose">
         A snapshot of the work, the books, and the people I am studying this quarter. Refreshed when something stops being true.
       </p>
     </div>
 
-    <div class="grid gap-px overflow-hidden rounded-md border border-line bg-line md:grid-cols-2 lg:grid-cols-4">
+    <div class="grid gap-px overflow-hidden rounded-2xl border border-pen-900/10 bg-pen-900/10 md:grid-cols-2 lg:grid-cols-4">
       <!-- Shipping -->
-      <div class="reveal spotlight bg-surface-1 p-6 md:p-8">
+      <div class="reveal spotlight bg-paper p-6 md:p-8">
         <header class="flex items-center justify-between">
           <span class="meta-key">Shipping</span>
-          <span class="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.16em] text-lime">
-            <span class="inline-block h-1.5 w-1.5 rounded-full bg-lime animate-[pulseDot_2s_ease-in-out_infinite]" />
+          <span class="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.16em] text-pen-900">
+            <span class="inline-block h-1.5 w-1.5 rounded-full bg-lime-deep animate-[pulseDot_2s_ease-in-out_infinite]" />
             live
           </span>
         </header>
-        <p class="mt-4 text-sm text-ink-100 leading-relaxed">
+        <p class="mt-4 text-sm text-pen-800 leading-relaxed">
           {now.shipping}
         </p>
       </div>
 
       <!-- Reading -->
-      <div class="reveal spotlight bg-surface-1 p-6 md:p-8" style="transition-delay: 60ms;">
+      <div class="reveal spotlight bg-paper p-6 md:p-8" style="transition-delay: 60ms;">
         <span class="meta-key">Reading</span>
         <ul class="mt-4 space-y-2.5">
           {
             now.reading.map((r) => (
-              <li class="text-sm text-ink-200 leading-snug flex gap-2">
-                <span class="text-lime/60 mt-1" aria-hidden="true">▹</span>
+              <li class="text-sm text-pen-700 leading-snug flex gap-2">
+                <span class="text-lime-deep mt-1" aria-hidden="true">▹</span>
                 <span>{r}</span>
               </li>
             ))
@@ -68,13 +68,13 @@ const now = {
       </div>
 
       <!-- Watching -->
-      <div class="reveal spotlight bg-surface-1 p-6 md:p-8" style="transition-delay: 120ms;">
+      <div class="reveal spotlight bg-paper p-6 md:p-8" style="transition-delay: 120ms;">
         <span class="meta-key">Studying</span>
         <ul class="mt-4 space-y-2.5">
           {
             now.watching.map((w) => (
-              <li class="text-sm text-ink-200 leading-snug flex gap-2">
-                <span class="text-lime/60 mt-1" aria-hidden="true">▹</span>
+              <li class="text-sm text-pen-700 leading-snug flex gap-2">
+                <span class="text-lime-deep mt-1" aria-hidden="true">▹</span>
                 <span>{w}</span>
               </li>
             ))
@@ -83,13 +83,13 @@ const now = {
       </div>
 
       <!-- Building -->
-      <div class="reveal spotlight bg-surface-1 p-6 md:p-8" style="transition-delay: 180ms;">
+      <div class="reveal spotlight bg-paper p-6 md:p-8" style="transition-delay: 180ms;">
         <span class="meta-key">Building</span>
         <ul class="mt-4 space-y-2.5">
           {
             now.building.map((b) => (
-              <li class="text-sm text-ink-200 leading-snug flex gap-2">
-                <span class="text-lime/60 mt-1" aria-hidden="true">▹</span>
+              <li class="text-sm text-pen-700 leading-snug flex gap-2">
+                <span class="text-lime-deep mt-1" aria-hidden="true">▹</span>
                 <span>{b}</span>
               </li>
             ))
@@ -98,8 +98,8 @@ const now = {
       </div>
     </div>
 
-    <p class="reveal mt-8 font-mono text-[10px] uppercase tracking-[0.18em] text-ink-500">
-      // as of {now.asOf} · refresh window: monthly
+    <p class="reveal mt-8 font-mono text-[10px] uppercase tracking-[0.18em] text-pen-500">
+      As of {now.asOf} · refresh window: monthly
     </p>
   </div>
 </section>

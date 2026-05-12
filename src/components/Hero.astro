@@ -16,100 +16,137 @@ function parseHeadline(s: string) {
   return parts;
 }
 const headlineParts = parseHeadline(hero.headline);
+
+// Top stat trio — fact-based, no fabricated metrics
+const stats = [
+  { k: "ROLE", v: "AE · GTM Engineer" },
+  { k: "MARKETS", v: "US · LATAM · APAC" },
+  { k: "STACK", v: "Claude · Apollo · Sheets" },
+];
 ---
 
-<section id="top" class="relative overflow-hidden border-b border-line">
-  <!-- Aurora mesh: two slow-floating radial gradients + soft grid overlay -->
+<section id="top" class="on-lime relative overflow-hidden">
+  <!-- Soft mesh blobs to add depth on the lime block -->
   <div aria-hidden="true" class="pointer-events-none absolute inset-0 overflow-hidden">
     <div
-      class="absolute -top-40 -left-40 h-[640px] w-[640px] rounded-full blur-3xl"
-      style="background: radial-gradient(circle, rgba(185,255,102,0.12), rgba(185,255,102,0) 65%); animation: heroFloat 18s ease-in-out infinite;"
+      class="absolute -top-40 -left-40 h-[640px] w-[640px] rounded-full blur-3xl opacity-60"
+      style="background: radial-gradient(circle, rgba(20,18,14,0.07), rgba(20,18,14,0) 65%); animation: heroFloat 18s ease-in-out infinite;"
     />
     <div
-      class="absolute top-1/2 -right-32 h-[520px] w-[520px] rounded-full blur-3xl"
-      style="background: radial-gradient(circle, rgba(140,200,255,0.07), rgba(140,200,255,0) 65%); animation: heroFloat 22s ease-in-out infinite reverse;"
-    />
-    <div
-      class="absolute inset-0 opacity-[0.04]"
-      style="background-image: linear-gradient(rgba(255,255,255,0.7) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.7) 1px, transparent 1px); background-size: 80px 80px; mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 75%); -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 75%);"
+      class="absolute bottom-0 -right-32 h-[520px] w-[520px] rounded-full blur-3xl opacity-50"
+      style="background: radial-gradient(circle, rgba(255,255,255,0.45), rgba(255,255,255,0) 65%); animation: heroFloat 22s ease-in-out infinite reverse;"
     />
   </div>
 
-  <div class="container-page relative pt-16 pb-20 md:pt-28 md:pb-32 lg:pt-32 lg:pb-40">
-    <!-- Top metadata row -->
+  <div class="container-page relative pt-10 pb-16 md:pt-20 md:pb-24 lg:pt-24 lg:pb-28">
+    <!-- Top metadata row: status pill + location -->
     <div class="reveal flex flex-wrap items-center justify-between gap-4">
       <div class="status-pill">
         <span class="status-dot" aria-hidden="true"></span>
-        <span class="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-100">
+        <span class="font-mono text-[11px] uppercase tracking-[0.18em] text-pen-900">
           {hero.status.pill}
         </span>
       </div>
-      <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-ink-400">
+      <div class="font-mono text-[11px] uppercase tracking-[0.18em] text-pen-700">
         {profile.location} · {profile.title}
       </div>
     </div>
 
-    <!-- Headline -->
-    <h1
-      class="reveal heading-serif-mix mt-10 text-balance text-display-lg md:text-display-xl"
-      style="transition-delay: 80ms;"
-    >
-      {
-        headlineParts.map((p) =>
-          p.italic ? (
-            <em>{p.text}</em>
-          ) : (
-            <span>{p.text}</span>
-          )
-        )
-      }
-    </h1>
+    <!-- Stat trio (replaces old MetricsStrip — pulled into hero) -->
+    <div class="reveal mt-8 grid grid-cols-3 gap-px bg-pen-900/10 border border-pen-900/10 rounded-xl overflow-hidden" style="transition-delay: 60ms;">
+      {stats.map((s) => (
+        <div class="bg-lime px-4 py-3.5 md:px-5 md:py-4">
+          <div class="font-mono text-[10px] uppercase tracking-[0.22em] text-pen-700">{s.k}</div>
+          <div class="mt-1 font-mono text-xs md:text-sm text-pen-900 leading-snug">{s.v}</div>
+        </div>
+      ))}
+    </div>
 
-    <!-- Subhead with rotating value-prop typewriter + CTAs -->
-    <div class="reveal mt-10 grid gap-10 lg:grid-cols-12" style="transition-delay: 160ms;">
-      <div class="lg:col-span-7 max-w-2xl">
-        <p class="text-lg leading-relaxed text-ink-200">
+    <!-- Hero grid: massive headline LEFT, portrait card RIGHT -->
+    <div class="reveal mt-10 md:mt-14 lg:mt-16 grid gap-10 lg:grid-cols-12 lg:gap-14 items-end" style="transition-delay: 120ms;">
+      <div class="lg:col-span-7 xl:col-span-8">
+        <h1 class="heading-serif-mix text-balance text-display-lg md:text-display-xl xl:text-display-2xl">
+          {
+            headlineParts.map((p) =>
+              p.italic ? <em>{p.text}</em> : <span>{p.text}</span>
+            )
+          }
+        </h1>
+
+        <p class="mt-7 max-w-xl text-base md:text-lg leading-relaxed text-pen-800">
           {hero.subhead}
         </p>
-        <p class="mt-5 font-mono text-[12px] uppercase tracking-[0.18em] text-ink-400 flex items-center gap-3">
-          <span class="text-lime">▸</span>
-          <span class="text-ink-500">I build</span>
-          <span id="rotator" class="text-lime min-w-[180px] inline-block">outbound campaigns</span>
-          <span class="inline-block w-[2px] h-3 bg-lime animate-[pulseDot_1s_ease-in-out_infinite]" aria-hidden="true"></span>
+
+        <div class="mt-8 flex flex-wrap items-center gap-3">
+          <a href={hero.ctas.primary.href} class="btn btn-primary magnetic">
+            {hero.ctas.primary.label}
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M13 5l7 7-7 7" />
+            </svg>
+          </a>
+          <a href={hero.ctas.secondary.href} class="btn btn-secondary">
+            {hero.ctas.secondary.label}
+          </a>
+          {hero.ctas.tertiary.map((l) => (
+            <a
+              href={l.href}
+              class="ml-2 text-sm text-pen-700 hover:text-pen-900 underline underline-offset-4 decoration-pen-900/30 hover:decoration-pen-900"
+              target={l.href.startsWith("http") ? "_blank" : undefined}
+              rel={l.href.startsWith("http") ? "noopener noreferrer" : undefined}
+            >
+              {l.label}
+            </a>
+          ))}
+        </div>
+
+        <p class="mt-6 font-mono text-[12px] uppercase tracking-[0.18em] text-pen-700 flex items-center gap-3">
+          <span aria-hidden="true">▸</span>
+          <span class="text-pen-500">currently building</span>
+          <span id="rotator" class="text-pen-900 min-w-[200px] inline-block">outbound campaigns</span>
+          <span class="inline-block w-[2px] h-3 bg-pen-900 animate-[pulseDot_1s_ease-in-out_infinite]" aria-hidden="true"></span>
         </p>
       </div>
-      <div class="lg:col-span-5 flex flex-wrap items-start gap-3 lg:justify-end">
-        <a href={hero.ctas.primary.href} class="btn btn-primary magnetic">
-          {hero.ctas.primary.label}
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M5 12h14M13 5l7 7-7 7" />
-          </svg>
-        </a>
-        <a href={hero.ctas.secondary.href} class="btn btn-secondary">
-          {hero.ctas.secondary.label}
-        </a>
+
+      <!-- Portrait slot.
+           When Hamid drops a real headshot at /hamid-hero.jpg, swap the
+           div block below for: <img src="/hamid-hero.jpg" alt="Hamid Khan" class="..." />
+           Until then, this monogram card fills the slot intentionally. -->
+      <div class="lg:col-span-5 xl:col-span-4">
+        <div class="relative aspect-[4/5] overflow-hidden rounded-2xl border border-pen-900/15 bg-pen-900 shadow-[0_24px_60px_-20px_rgba(20,18,14,0.35)]">
+          <!-- Try image first; if absent, the bg art shows through -->
+          <img
+            src="/hamid-hero.jpg"
+            alt="Hamid Khan"
+            class="absolute inset-0 h-full w-full object-cover"
+            onerror="this.style.display='none'"
+            loading="eager"
+          />
+          <!-- Fallback art (always rendered behind img; visible if img is hidden) -->
+          <div class="absolute inset-0 z-0 grid place-items-center">
+            <div class="absolute inset-0 opacity-50" style="background:
+              radial-gradient(420px circle at 30% 20%, rgba(185,255,102,0.55), transparent 55%),
+              radial-gradient(380px circle at 80% 80%, rgba(232,217,184,0.35), transparent 60%);"></div>
+            <div class="relative z-10 text-center">
+              <div class="font-serif italic text-ink-50 text-[clamp(4rem,12vw,9rem)] leading-none tracking-tight">HK</div>
+              <div class="mt-4 font-mono text-[10px] uppercase tracking-[0.28em] text-ink-300">photo placeholder</div>
+            </div>
+          </div>
+          <!-- Bottom caption strip on the card -->
+          <div class="absolute left-3 right-3 bottom-3 z-20 flex items-center justify-between gap-3 rounded-lg bg-paper/85 backdrop-blur-sm px-3 py-2 border border-paper">
+            <div class="flex items-center gap-2">
+              <span class="status-dot" aria-hidden="true"></span>
+              <span class="font-mono text-[10px] uppercase tracking-[0.18em] text-pen-900">{profile.name}</span>
+            </div>
+            <span class="font-mono text-[10px] uppercase tracking-[0.18em] text-pen-700">2026</span>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- Tertiary links + experience credentials -->
-    <div class="reveal mt-8 flex flex-wrap items-center gap-x-6 gap-y-2" style="transition-delay: 240ms;">
-      {
-        hero.ctas.tertiary.map((l) => (
-          <a
-            href={l.href}
-            class="text-sm text-ink-300 hover:text-ink-50"
-            target={l.href.startsWith("http") ? "_blank" : undefined}
-            rel={l.href.startsWith("http") ? "noopener noreferrer" : undefined}
-          >
-            {l.label}
-          </a>
-        ))
-      }
-    </div>
-
-    <div class="reveal mt-14 md:mt-20 flex flex-wrap items-center gap-3 md:gap-5" style="transition-delay: 320ms;" id="hero-credentials">
-      <span class="font-mono text-[10px] uppercase tracking-[0.18em] text-ink-500">
-        // shipped at
+    <!-- Client strip -->
+    <div class="reveal mt-14 md:mt-20 flex flex-wrap items-center gap-3 md:gap-5" style="transition-delay: 240ms;" id="hero-credentials">
+      <span class="font-mono text-[10px] uppercase tracking-[0.22em] text-pen-700">
+        Shipped at
       </span>
       <span class="tag">MUST Company</span>
       <span class="tag">Bydrec</span>

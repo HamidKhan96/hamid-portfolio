@@ -1,42 +1,45 @@
 ---
 import { resources } from "../content/site";
+
+const label = resources.label.replace(/^\$\s*/, "").replace(/_/g, " ").trim();
+const cap = label.charAt(0).toUpperCase() + label.slice(1);
 ---
 
-<section id="resources" class="section border-t border-line bg-surface-1/30">
+<section id="resources" class="section bg-paper-deep">
   <div class="container-page">
     <div class="reveal grid gap-6 lg:grid-cols-12 lg:gap-12 mb-12 lg:mb-16">
       <div class="lg:col-span-7">
-        <p class="section-label">{resources.label}</p>
-        <h2 class="heading-serif-mix mt-5 text-balance text-display-lg">
+        <p class="section-label"><span class="font-mono">11 / {cap}</span></p>
+        <h2 class="heading-serif-mix mt-6 text-balance text-display-lg">
           {resources.heading}
         </h2>
       </div>
-      <p class="lg:col-span-5 self-end text-base text-ink-200 max-w-prose">
+      <p class="lg:col-span-5 self-end text-base text-pen-700 max-w-prose">
         {resources.intro}
       </p>
     </div>
 
-    <ul class="grid gap-px overflow-hidden rounded-md border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
+    <ul class="grid gap-px overflow-hidden rounded-2xl border border-pen-900/10 bg-pen-900/10 md:grid-cols-2 lg:grid-cols-3">
       {
         resources.items.map((r, i) => (
           <li
-            class={`reveal spotlight bg-surface-1 hover:bg-surface-2 transition-colors duration-200 p-6 ${i === 0 ? "lg:col-span-1 ring-1 ring-inset ring-lime/15" : ""}`}
+            class={`reveal spotlight bg-paper hover:bg-paper-deep transition-colors duration-200 p-6 ${i === 0 ? "lg:col-span-1 ring-1 ring-inset ring-lime-deep/30" : ""}`}
             style={`transition-delay: ${i * 40}ms;`}
           >
             <div class="flex items-start justify-between gap-4">
-              <h3 class="text-base font-medium text-ink-50">{r.title}</h3>
+              <h3 class="text-base font-medium text-pen-900">{r.title}</h3>
               {!r.available && <span class="tag">Soon</span>}
               {i === 0 && (
-                <span class="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.16em] text-lime">
-                  <span class="inline-block h-1.5 w-1.5 rounded-full bg-lime" />
+                <span class="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.16em] text-pen-900">
+                  <span class="inline-block h-1.5 w-1.5 rounded-full bg-lime-deep" />
                   live
                 </span>
               )}
             </div>
-            <p class="mt-3 text-sm text-ink-300 min-h-[42px]">{r.description}</p>
+            <p class="mt-3 text-sm text-pen-700 min-h-[42px]">{r.description}</p>
             <a
               href={r.href}
-              class="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-lime hover:text-lime-dim"
+              class="mt-5 inline-flex items-center gap-1.5 text-sm font-medium text-pen-900 hover:text-pen-700 underline underline-offset-4 decoration-pen-900/30 hover:decoration-pen-900"
               target={r.href.startsWith("http") ? "_blank" : undefined}
               rel={r.href.startsWith("http") ? "noopener noreferrer" : undefined}
             >

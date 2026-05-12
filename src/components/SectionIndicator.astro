@@ -29,12 +29,12 @@ const sections = [
             class="group flex items-center gap-3 justify-end opacity-50 hover:opacity-100 transition-opacity"
             aria-label={`Jump to ${s.label}`}
           >
-            <span class="font-mono text-[10px] uppercase tracking-[0.16em] text-ink-200 opacity-0 group-hover:opacity-100 transition-opacity bg-surface-1/80 backdrop-blur-sm border border-line px-2 py-0.5 rounded-sm">
+            <span class="font-mono text-[10px] uppercase tracking-[0.16em] text-pen-900 opacity-0 group-hover:opacity-100 transition-opacity bg-paper/90 backdrop-blur-sm border border-pen-900/15 px-2 py-0.5 rounded-full">
               {s.label}
             </span>
             <span
               data-section-dot
-              class="inline-block h-px w-6 bg-ink-500 transition-all duration-300"
+              class="inline-block h-px w-6 bg-pen-400 transition-all duration-300"
             />
           </a>
         </li>
@@ -57,10 +57,10 @@ const sections = [
       const isActive = l.dataset.sectionLink === id;
       l.classList.toggle("opacity-100", isActive);
       l.classList.toggle("opacity-50", !isActive);
-      dot?.classList.toggle("bg-lime", isActive);
+      dot?.classList.toggle("bg-pen-900", isActive);
       dot?.classList.toggle("w-10", isActive);
       dot?.classList.toggle("h-0.5", isActive);
-      dot?.classList.toggle("bg-ink-500", !isActive);
+      dot?.classList.toggle("bg-pen-400", !isActive);
       dot?.classList.toggle("w-6", !isActive);
       dot?.classList.toggle("h-px", !isActive);
     });

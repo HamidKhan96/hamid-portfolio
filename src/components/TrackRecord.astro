@@ -1,17 +1,20 @@
 ---
 import { trackRecord } from "../content/site";
+
+const label = trackRecord.label.replace(/^\$\s*/, "").replace(/_/g, " ").trim();
+const cap = label.charAt(0).toUpperCase() + label.slice(1);
 ---
 
-<section id="track-record" class="section">
+<section id="track-record" class="section bg-paper-deep">
   <div class="container-page">
     <div class="reveal grid gap-6 lg:grid-cols-12 lg:gap-12 mb-14 lg:mb-16">
       <div class="lg:col-span-7">
-        <p class="section-label">{trackRecord.label}</p>
-        <h2 class="heading-serif-mix mt-5 text-balance text-display-lg">
+        <p class="section-label"><span class="font-mono">08 / {cap}</span></p>
+        <h2 class="heading-serif-mix mt-6 text-balance text-display-lg">
           {trackRecord.heading}
         </h2>
       </div>
-      <p class="lg:col-span-5 self-end text-base text-ink-200 max-w-prose">
+      <p class="lg:col-span-5 self-end text-base text-pen-700 max-w-prose">
         {trackRecord.intro}
       </p>
     </div>
@@ -20,31 +23,33 @@ import { trackRecord } from "../content/site";
       {
         trackRecord.items.map((r, i) => (
           <li
-            class="reveal ticket spotlight"
+            class="reveal card spotlight overflow-hidden"
             style={`transition-delay: ${i * 60}ms;`}
           >
-            <header class="ticket-header">
+            <header class="flex items-center justify-between border-b border-pen-900/10 bg-paper-deep/60 px-5 py-3">
               <div class="flex items-center gap-3">
-                <span class="ticket-id">ROLE-{String(i + 1).padStart(2, "0")}</span>
-                <span class={`ticket-status ${r.status === "PAST" ? "ticket-status-past" : ""}`}>
-                  <span class={`inline-block h-1.5 w-1.5 rounded-full ${r.status === "PAST" ? "bg-ink-400" : "bg-lime"}`} />
-                  {r.status}
+                <span class="font-mono text-[11px] uppercase tracking-[0.18em] text-pen-700">
+                  ROLE-{String(i + 1).padStart(2, "0")}
+                </span>
+                <span class="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.16em]">
+                  <span class={`inline-block h-1.5 w-1.5 rounded-full ${r.status === "PAST" ? "bg-pen-400" : "bg-lime-deep"}`} />
+                  <span class={r.status === "PAST" ? "text-pen-500" : "text-pen-900"}>{r.status}</span>
                 </span>
               </div>
-              <span class="font-mono text-[10px] uppercase tracking-[0.18em] text-ink-400">
+              <span class="font-mono text-[10px] uppercase tracking-[0.18em] text-pen-500">
                 {r.region}
               </span>
             </header>
 
-            <div class="ticket-body grid gap-6 md:grid-cols-12 md:gap-10">
+            <div class="p-6 md:p-8 grid gap-6 md:grid-cols-12 md:gap-10">
               <div class="md:col-span-4">
-                <h3 class="text-xl font-medium text-ink-50 tracking-tight">{r.company}</h3>
-                <p class="mt-1.5 text-sm text-ink-300">{r.role}</p>
+                <h3 class="text-xl font-medium text-pen-900 tracking-tight">{r.company}</h3>
+                <p class="mt-1.5 text-sm text-pen-500">{r.role}</p>
               </div>
               <ul class="md:col-span-8 space-y-2.5">
                 {r.highlights.map((h) => (
-                  <li class="flex gap-3 text-sm text-ink-200">
-                    <span class="mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-lime" />
+                  <li class="flex gap-3 text-sm text-pen-700">
+                    <span class="mt-2 inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-lime-deep" />
                     <span class="leading-relaxed">{h}</span>
                   </li>
                 ))}
@@ -55,8 +60,8 @@ import { trackRecord } from "../content/site";
       }
     </ol>
 
-    <p class="reveal mt-8 font-mono text-[11px] uppercase tracking-[0.18em] text-ink-500">
-      // Full timeline in CV. Available on request.
+    <p class="reveal mt-8 font-mono text-[11px] uppercase tracking-[0.18em] text-pen-500">
+      Full timeline in CV. Available on request.
     </p>
   </div>
 </section>

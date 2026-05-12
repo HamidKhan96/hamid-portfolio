@@ -6,7 +6,7 @@ const items = [...consoleStrip, ...consoleStrip];
 
 <section
   aria-label="Profile console"
-  class="border-b border-line bg-surface-1/50"
+  class="border-b border-pen-900/10 bg-paper-deep/60"
 >
   <div class="overflow-hidden mask-fade-x">
     <ul class="flex w-max animate-ticker gap-12 py-4">
@@ -14,10 +14,10 @@ const items = [...consoleStrip, ...consoleStrip];
         items.map((m, i) => (
           <li class="flex items-center gap-3 whitespace-nowrap">
             <span class="meta-key">{m.key}</span>
-            <span class="text-ink-500">·</span>
+            <span class="text-pen-500">·</span>
             <span class="meta-val">{m.value}</span>
             {i < items.length - 1 && (
-              <span class="text-ink-600 ml-12" aria-hidden="true">
+              <span class="text-pen-400 ml-12" aria-hidden="true">
                 ─
               </span>
             )}

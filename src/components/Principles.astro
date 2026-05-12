@@ -1,37 +1,40 @@
 ---
 import { principles } from "../content/site";
+
+const label = principles.label.replace(/^\$\s*/, "").replace(/_/g, " ").trim();
+const cap = label.charAt(0).toUpperCase() + label.slice(1);
 ---
 
-<section id="principles" class="section border-t border-line">
+<section id="principles" class="section bg-paper-deep">
   <div class="container-page">
     <div class="reveal grid gap-6 lg:grid-cols-12 lg:gap-12 mb-14 lg:mb-16">
       <div class="lg:col-span-7">
-        <p class="section-label">{principles.label}</p>
-        <h2 class="heading-serif-mix mt-5 text-balance text-display-lg">
+        <p class="section-label"><span class="font-mono">02 / {cap}</span></p>
+        <h2 class="heading-serif-mix mt-6 text-balance text-display-lg">
           {principles.heading}
         </h2>
       </div>
-      <p class="lg:col-span-5 self-end text-base text-ink-200 max-w-prose">
+      <p class="lg:col-span-5 self-end text-base text-pen-700 max-w-prose">
         {principles.intro}
       </p>
     </div>
 
-    <ol class="grid gap-px overflow-hidden rounded-md border border-line bg-line md:grid-cols-2 lg:grid-cols-3">
+    <ol class="grid gap-px overflow-hidden rounded-2xl border border-pen-900/10 bg-pen-900/10 md:grid-cols-2 lg:grid-cols-3">
       {
         principles.items.map((p, i) => (
           <li
-            class="reveal spotlight tilt bg-surface-1 hover:bg-surface-2 transition-colors duration-200 p-7 md:p-8"
+            class="reveal spotlight tilt bg-paper hover:bg-paper-deep transition-colors duration-200 p-7 md:p-8"
             style={`transition-delay: ${i * 50}ms;`}
           >
             <div class="flex items-start gap-4">
-              <span class="inline-flex items-center justify-center h-7 w-7 shrink-0 border border-line/80 rounded font-mono text-xs text-lime/90 -mt-0.5">
+              <span class="inline-flex items-center justify-center h-8 w-8 shrink-0 border border-pen-900/20 rounded-full font-mono text-xs text-pen-900 bg-lime/40 -mt-0.5">
                 {p.n}
               </span>
               <div class="flex-1">
-                <h3 class="heading-serif-mix text-xl md:text-2xl text-ink-50 leading-snug">
+                <h3 class="heading-serif-mix text-xl md:text-2xl text-pen-900 leading-snug">
                   {p.title}
                 </h3>
-                <p class="mt-3 text-sm leading-relaxed text-ink-200">
+                <p class="mt-3 text-sm leading-relaxed text-pen-700">
                   {p.body}
                 </p>
               </div>
@@ -41,8 +44,8 @@ import { principles } from "../content/site";
       }
     </ol>
 
-    <p class="reveal mt-8 font-mono text-[10px] uppercase tracking-[0.18em] text-ink-500">
-      // {principles.influences}
+    <p class="reveal mt-8 font-mono text-[10px] uppercase tracking-[0.18em] text-pen-500">
+      Influences · {principles.influences}
     </p>
   </div>
 </section>

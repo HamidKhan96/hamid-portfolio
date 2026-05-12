@@ -1,27 +1,31 @@
 ---
 import { about } from "../content/site";
+
+// Strip the legacy `$ ` prefix from labels — paper aesthetic uses "About" not "$ about"
+const label = about.label.replace(/^\$\s*/, "").replace(/_/g, " ").trim();
+const cap = label.charAt(0).toUpperCase() + label.slice(1);
 ---
 
 <section id="about" class="section">
   <div class="container-page">
     <div class="grid gap-12 lg:grid-cols-12 lg:gap-16">
       <div class="reveal lg:col-span-4">
-        <p class="section-label">{about.label}</p>
-        <h2 class="heading-serif-mix mt-5 text-balance text-display-md">
+        <p class="section-label"><span class="font-mono">01 / {cap}</span></p>
+        <h2 class="heading-serif-mix mt-6 text-balance text-display-md">
           {about.heading}
         </h2>
       </div>
 
       <div class="reveal lg:col-span-8" style="transition-delay: 80ms;">
-        <div class="space-y-5 text-lg leading-relaxed text-ink-200">
+        <div class="space-y-5 text-lg leading-relaxed text-pen-800">
           {about.paragraphs.map((p) => <p class="text-pretty">{p}</p>)}
         </div>
 
         <ul class="mt-10 grid gap-3 sm:grid-cols-2">
           {
             about.bullets.map((b) => (
-              <li class="flex items-start gap-3 text-sm text-ink-200">
-                <span class="mt-2 inline-block h-1 w-3 shrink-0 bg-lime/80" />
+              <li class="flex items-start gap-3 text-sm text-pen-700">
+                <span class="mt-2 inline-block h-1.5 w-3 shrink-0 rounded-full bg-lime-deep" />
                 <span>{b}</span>
               </li>
             ))

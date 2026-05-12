@@ -4,11 +4,10 @@ const year = new Date().getFullYear();
 const updated = new Date().toLocaleDateString("en-US", { year: "numeric", month: "short" });
 ---
 
-<footer class="border-t border-line">
-  <!-- Big closing typographic statement -->
+<footer class="on-dark">
   <div class="container-page pt-20 pb-10 md:pt-28 md:pb-14">
-    <p class="section-label">$ end_of_file</p>
-    <h2 class="heading-serif-mix mt-5 text-balance text-display-lg max-w-4xl">
+    <p class="section-label"><span class="font-mono">End of file</span></p>
+    <h2 class="heading-serif-mix mt-6 text-balance text-display-lg max-w-4xl">
       Let&rsquo;s build the <em>pipeline</em>.
     </h2>
     <div class="mt-8 flex flex-wrap items-center gap-3">
@@ -24,29 +23,13 @@ const updated = new Date().toLocaleDateString("en-US", { year: "numeric", month:
     </div>
   </div>
 
-  <!-- ASCII signature row (desktop only — too wide to fit on mobile cleanly) -->
-  <div class="hidden lg:block container-page py-8 border-t border-line">
-    <pre class="font-mono text-[10px] xl:text-[11px] leading-tight text-ink-500 overflow-x-auto">
-{`  ██╗  ██╗  █████╗  ███╗   ███╗ ██╗ ██████╗      ██╗  ██╗ ██╗  ██╗  █████╗  ███╗   ██╗
-  ██║  ██║ ██╔══██╗ ████╗ ████║ ██║ ██╔══██╗     ██║ ██╔╝ ██║  ██║ ██╔══██╗ ████╗  ██║
-  ███████║ ███████║ ██╔████╔██║ ██║ ██║  ██║     █████╔╝  ███████║ ███████║ ██╔██╗ ██║
-  ██╔══██║ ██╔══██║ ██║╚██╔╝██║ ██║ ██║  ██║     ██╔═██╗  ██╔══██║ ██╔══██║ ██║╚██╗██║
-  ██║  ██║ ██║  ██║ ██║ ╚═╝ ██║ ██║ ██████╔╝     ██║  ██╗ ██║  ██║ ██║  ██║ ██║ ╚████║
-  ╚═╝  ╚═╝ ╚═╝  ╚═╝ ╚═╝     ╚═╝ ╚═╝ ╚═════╝      ╚═╝  ╚═╝ ╚═╝  ╚═╝ ╚═╝  ╚═╝ ╚═╝  ╚═══╝`}
-    </pre>
-  </div>
-
-  <!-- Mobile big-name signature (alternative when ASCII is hidden) -->
-  <div class="lg:hidden container-page py-10 border-t border-line">
-    <p class="font-serif text-6xl text-ink-200 leading-none tracking-tight">
-      Hamid
-    </p>
-    <p class="font-serif italic text-6xl text-ink-300 leading-none tracking-tight mt-2">
-      Khan.
+  <!-- Big closing serif name signature, full bleed within container -->
+  <div class="container-page py-10 border-t border-line">
+    <p class="font-serif italic text-[clamp(4rem,15vw,12rem)] text-ink-50 leading-[0.85] tracking-tightest">
+      Hamid Khan.
     </p>
   </div>
 
-  <!-- Bottom legal/meta row -->
   <div class="container-page py-6 border-t border-line">
     <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
       <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">
@@ -68,9 +51,7 @@ const updated = new Date().toLocaleDateString("en-US", { year: "numeric", month:
     </div>
 
     <div class="mt-5 flex flex-wrap items-center justify-between gap-3 font-mono text-[10px] uppercase tracking-[0.18em] text-ink-500">
-      <span>
-        // Built in Astro · Deployed on Cloudflare Pages · Coded by Hamid
-      </span>
+      <span>Built in Astro · Deployed on Cloudflare Pages · Coded by Hamid</span>
       <div class="flex flex-wrap items-center gap-3">
         <a
           href="https://github.com/HamidKhan96/hamid-portfolio/commits/main"
