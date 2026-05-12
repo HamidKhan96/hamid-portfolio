@@ -27,9 +27,9 @@ const stats = [
 
 <section
   id="top"
-  class="on-lime relative overflow-hidden"
+  class="on-peach relative overflow-hidden"
 >
-  <!-- Soft mesh blobs to add depth on the lime block. -->
+  <!-- Soft mesh blobs to add depth on the peach block. -->
   <div aria-hidden="true" class="pointer-events-none absolute inset-0 overflow-hidden">
     <div
       class="absolute -top-40 -left-40 h-[640px] w-[640px] rounded-full blur-3xl opacity-60"
@@ -58,7 +58,7 @@ const stats = [
     <!-- Stat trio (replaces old MetricsStrip — pulled into hero) -->
     <div class="reveal mt-8 grid grid-cols-3 gap-px bg-pen-900/10 border border-pen-900/10 rounded-xl overflow-hidden" style="transition-delay: 60ms;">
       {stats.map((s) => (
-        <div class="bg-lime px-4 py-3.5 md:px-5 md:py-4">
+        <div class="bg-peach px-4 py-3.5 md:px-5 md:py-4">
           <div class="font-mono text-[10px] uppercase tracking-[0.22em] text-pen-700">{s.k}</div>
           <div class="mt-1 font-mono text-xs md:text-sm text-pen-900 leading-snug">{s.v}</div>
         </div>
@@ -126,8 +126,7 @@ const stats = [
             height="975"
             loading="eager"
             decoding="async"
-            class="block w-auto h-auto max-h-[380px] sm:max-h-[460px] md:max-h-[500px] lg:max-h-[540px] xl:max-h-[600px] object-contain [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)]"
-            style="filter: drop-shadow(0 20px 28px rgba(86, 110, 35, 0.35));"
+            class="block w-auto h-auto max-h-[380px] sm:max-h-[460px] md:max-h-[500px] lg:max-h-[540px] xl:max-h-[600px] object-contain"
           />
         </picture>
       </div>

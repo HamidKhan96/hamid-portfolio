@@ -104,13 +104,22 @@
   }
   .on-dark h1, .on-dark h2, .on-dark h3, .on-dark h4 { @apply text-ink-50; }
 
-  /* Lime full-block section (used by Hero) */
+  /* Lime full-block section (legacy — replaced by .on-peach for hero) */
   .on-lime {
     @apply bg-lime text-pen-900;
     background-image: radial-gradient(rgba(20, 18, 14, 0.07) 1px, transparent 1px);
     background-size: 28px 28px;
   }
   .on-lime h1, .on-lime h2, .on-lime h3, .on-lime h4 { @apply text-pen-900; }
+
+  /* Peach full-block section (current Hero). Warmer than lime, easier on
+     the eye, plays well with navy suit photography. */
+  .on-peach {
+    @apply bg-peach text-pen-900;
+    background-image: radial-gradient(rgba(20, 18, 14, 0.06) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+  .on-peach h1, .on-peach h2, .on-peach h3, .on-peach h4 { @apply text-pen-900; }
 
   /* Editorial section header: 01 / About — replaces old `$ about` mono labels.
      Use as <header class="section-head"><span class="num">01</span><h2>...</h2></header> */
@@ -141,6 +150,7 @@
   }
   .on-dark .section-label { @apply text-ink-300; }
   .on-lime .section-label { @apply text-pen-700; }
+  .on-peach .section-label { @apply text-pen-700; }
 
   /* Editorial heading with serif italic accent */
   .heading-serif-mix {
@@ -192,6 +202,8 @@
   .on-dark .btn-secondary { @apply border-line text-ink-100 hover:border-line2 hover:bg-surface-2; }
   .on-lime .btn-primary { @apply bg-pen-900 text-lime hover:bg-pen-800; }
   .on-lime .btn-secondary { @apply border-pen-900/30 text-pen-900 hover:border-pen-900 hover:bg-pen-900/10; }
+  .on-peach .btn-primary { @apply bg-pen-900 text-peach hover:bg-pen-800; }
+  .on-peach .btn-secondary { @apply border-pen-900/30 text-pen-900 hover:border-pen-900 hover:bg-pen-900/10; }
 
   /* Status pill */
   .status-pill {
@@ -199,6 +211,7 @@
   }
   .on-dark .status-pill { @apply border-line bg-surface-1; }
   .on-lime .status-pill { @apply border-pen-900/20 bg-paper; }
+  .on-peach .status-pill { @apply border-pen-900/20 bg-paper; }
   .status-dot {
     @apply inline-block h-2 w-2 rounded-full bg-lime-deep;
     box-shadow: 0 0 0 4px rgba(134, 199, 46, 0.18);
@@ -206,6 +219,7 @@
   }
   .on-dark .status-dot { @apply bg-lime; box-shadow: 0 0 0 4px rgba(185, 255, 102, 0.16); }
   .on-lime .status-dot { @apply bg-pen-900; box-shadow: 0 0 0 4px rgba(20, 18, 14, 0.18); }
+  .on-peach .status-dot { @apply bg-pen-900; box-shadow: 0 0 0 4px rgba(20, 18, 14, 0.18); }
 
   /* Card primitives — paper default */
   .card {
@@ -304,6 +318,9 @@
     border-radius: 4px;
   }
   .on-lime .tag {
+    @apply border-pen-900/20 bg-paper text-pen-900;
+  }
+  .on-peach .tag {
     @apply border-pen-900/20 bg-paper text-pen-900;
   }
 
