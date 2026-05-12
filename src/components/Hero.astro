@@ -25,15 +25,22 @@ const stats = [
 ];
 ---
 
-<section id="top" class="on-lime relative overflow-hidden">
-  <!-- Soft mesh blobs to add depth on the lime block -->
+<section
+  id="top"
+  class="on-lime relative overflow-hidden"
+  style="background: radial-gradient(ellipse 60% 80% at 80% 95%, #8FB94D 0%, #A4D752 22%, #B9FF66 60%);"
+>
+  <!-- Soft mesh blobs to add depth on the lime block.
+       The radial gradient above puts a darker lime corner where the
+       portrait sits so the photo's bottom fade dissolves into a tonal
+       shift instead of standing out as a rectangle. -->
   <div aria-hidden="true" class="pointer-events-none absolute inset-0 overflow-hidden">
     <div
       class="absolute -top-40 -left-40 h-[640px] w-[640px] rounded-full blur-3xl opacity-60"
       style="background: radial-gradient(circle, rgba(20,18,14,0.07), rgba(20,18,14,0) 65%); animation: heroFloat 18s ease-in-out infinite;"
     />
     <div
-      class="absolute bottom-0 -right-32 h-[520px] w-[520px] rounded-full blur-3xl opacity-50"
+      class="absolute top-1/4 -left-32 h-[480px] w-[480px] rounded-full blur-3xl opacity-40"
       style="background: radial-gradient(circle, rgba(255,255,255,0.45), rgba(255,255,255,0) 65%); animation: heroFloat 22s ease-in-out infinite reverse;"
     />
   </div>
@@ -123,15 +130,9 @@ const stats = [
             height="975"
             loading="eager"
             decoding="async"
-            class="block w-auto h-auto max-h-[380px] sm:max-h-[460px] md:max-h-[500px] lg:max-h-[540px] xl:max-h-[600px] object-contain drop-shadow-[0_28px_60px_rgba(20,18,14,0.22)] [mask-image:linear-gradient(to_bottom,black_78%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,black_78%,transparent_100%)]"
+            class="block w-auto h-auto max-h-[380px] sm:max-h-[460px] md:max-h-[500px] lg:max-h-[540px] xl:max-h-[600px] object-contain [mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,black_70%,transparent_100%)]"
+            style="filter: drop-shadow(0 20px 28px rgba(86, 110, 35, 0.35));"
           />
-          <!-- Soft navy spill that picks up the suit color and finishes
-               the photo with a blur instead of a hard chop. Sampled median
-               suit navy = #282E36. -->
-          <span
-            aria-hidden="true"
-            class="absolute left-[6%] right-[6%] bottom-0 translate-y-[28%] h-20 sm:h-24 md:h-28 rounded-[50%] bg-gradient-to-b from-[#282E36] via-[#282E36]/45 to-transparent blur-2xl pointer-events-none"
-          ></span>
         </picture>
       </div>
     </div>
