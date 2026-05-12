@@ -28,7 +28,7 @@ Static-rendered Astro single-page site, deployed to Cloudflare Pages.
 
 ## Iteration log
 
-Built and refined across 40 deploy cycles. Each cycle = QA → fix or refine → push → next cycle. See `git log` for the full record.
+Built and refined across 60 deploy cycles. Each cycle = QA → fix or refine → push → next cycle. See `git log` for the full record. Milestones tagged at 40 (`v1.0-40cycles`) and 50 (`v1.1-50cycles`).
 
 ## Stack
 
