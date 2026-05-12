@@ -51,7 +51,7 @@ export const consoleStrip = [
 ];
 
 export const about = {
-  label: "$ about",
+  label: "About",
   heading: "From the factory floor to the pipeline.",
   paragraphs: [
     "Mechanical engineering degree. Two years on a production line in Lahore running a 30-person team. Built the live Excel dashboard the plant manager checked every morning. That was the first time I noticed I cared more about the system than the output.",
@@ -68,7 +68,7 @@ export const about = {
 
 // Case studies presented as CRM-style ticket cards
 export const caseStudies = {
-  label: "$ case_studies",
+  label: "Case studies",
   heading: "Four systems I built. Anonymized.",
   intro:
     "Each ticket is a real workflow I designed and ran. The numbers I will not publish go on a call. The systems behind them are documented here.",
@@ -169,7 +169,7 @@ export const caseStudies = {
 };
 
 export const systems = {
-  label: "$ what_i_build",
+  label: "What I build",
   heading: "Six systems I run.",
   intro:
     "Not skills on a resume. Workflows I have designed and operate. Each one is repeatable, documented, and shippable inside any GTM team in week one.",
@@ -221,7 +221,7 @@ export const systems = {
 
 // Skills laid out as a sales pipeline (stages with skills under each)
 export const pipeline = {
-  label: "$ pipeline",
+  label: "Pipeline",
   heading: "Skills, mapped to the cycle.",
   intro: "Grouped by where they sit in the deal, not by tool category.",
   stages: [
@@ -268,7 +268,7 @@ export const pipeline = {
 // Principles synthesized from the working sales canon I study.
 // Voice is mine. Influences in the meta line.
 export const principles = {
-  label: "$ how_i_sell",
+  label: "How I sell",
   heading: "Six principles I sell from.",
   intro:
     "Not slogans. Operating rules I have made expensive mistakes to earn. They show up in the systems, the tone, and the cadence I bring into any GTM team.",
@@ -314,7 +314,7 @@ export const principles = {
 };
 
 export const trackRecord = {
-  label: "$ track_record",
+  label: "Track record",
   heading: "Five roles. One throughline.",
   intro:
     "Engineer first, then a salesperson, now both. Each role taught me something a sales-only path would have missed.",
@@ -383,7 +383,7 @@ export const trackRecord = {
 };
 
 export const resources = {
-  label: "$ resources",
+  label: "Resources",
   heading: "Take what is useful.",
   intro:
     "The CV is live. The playbooks I run with go out by email when requested. No gating, no funnel.",
@@ -434,7 +434,7 @@ export const resources = {
 };
 
 export const contact = {
-  label: "$ contact",
+  label: "Contact",
   heading: "Hire me, send a brief, or just say hello.",
   subhead:
     "Best on email or LinkedIn. Remote first, comfortable across US, EU, and APAC time zones.",
