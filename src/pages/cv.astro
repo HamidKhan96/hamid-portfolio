@@ -1,0 +1,311 @@
+---
+import Base from "../layouts/Base.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import { profile, trackRecord, principles, pipeline, contact } from "../content/site";
+
+// Pull a tight 2-line summary from existing copy. The about block is rich;
+// the CV needs a punchier version.
+const summary =
+  "GTM Engineer and full-cycle Account Executive. Three years closing B2B tech sales across US, LATAM, and APAC. Mechanical engineering background applied to the same problem from the other side: building the systems that produce the pipeline I sell from. AI outbound stacks, executive ghostwriting, CRM hygiene, ICP research frameworks.";
+
+// Education — derived from the career narrative (mechanical engineering →
+// production engineering → robotics research → sales). Hardcoded here because
+// it doesn't appear elsewhere on the site.
+const education = [
+  {
+    degree: "Bachelor of Science · Mechanical Engineering",
+    institution: "University of Engineering and Technology (UET), Lahore",
+    period: "2014 — 2018",
+    note: "Final-year research in human-centered robotics (NCRA). Co-authored a published paper on assistive exoskeleton design.",
+  },
+];
+
+const updated = new Date().toLocaleDateString("en-US", { year: "numeric", month: "short" });
+---
+
+<Base
+  title="Hamid Khan · CV"
+  description="Hamid Khan — GTM Engineer & Account Executive. Full CV: experience, skills, principles, education, contact."
+>
+  <Nav />
+
+  <main id="main" class="cv-page">
+    <!-- Header -->
+    <section id="cv-top" class="border-b border-pen-900/10">
+      <div class="container-page py-12 md:py-16">
+        <div class="reveal grid gap-8 md:grid-cols-12 items-end">
+          <div class="md:col-span-8">
+            <p class="section-label"><span class="font-mono">Curriculum vitae · {updated}</span></p>
+            <h1 class="heading-serif-mix mt-6 text-balance text-display-lg md:text-display-xl">
+              Hamid <em>Khan.</em>
+            </h1>
+            <p class="mt-4 text-lg md:text-xl text-pen-700">
+              {profile.title}
+            </p>
+            <ul class="mt-6 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-pen-800">
+              <li class="flex items-center gap-2"><span class="text-pen-500">↗</span> <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" class="hover:text-pen-900 underline underline-offset-4 decoration-pen-900/30 hover:decoration-pen-900">linkedin.com/in/hamid-m-khan</a></li>
+              <li class="flex items-center gap-2"><span class="text-pen-500">@</span> <a href={`mailto:${profile.email}`} class="hover:text-pen-900 underline underline-offset-4 decoration-pen-900/30 hover:decoration-pen-900">{profile.email}</a></li>
+              <li class="flex items-center gap-2"><span class="text-pen-500">◎</span> {profile.location}</li>
+              <li class="flex items-center gap-2"><span class="text-pen-500">↪</span> <a href="/" class="hover:text-pen-900 underline underline-offset-4 decoration-pen-900/30 hover:decoration-pen-900">hamidkhan.pages.dev</a></li>
+            </ul>
+          </div>
+
+          <!-- Action panel: download / print / status -->
+          <aside class="md:col-span-4 flex flex-col gap-4 print:hidden">
+            <div class="status-pill self-start">
+              <span class="status-dot" aria-hidden="true"></span>
+              <span class="font-mono text-[11px] uppercase tracking-[0.18em] text-pen-900">
+                {profile.availability.replace("Open to ", "Open · ")}
+              </span>
+            </div>
+            <div class="flex flex-wrap items-center gap-3">
+              <a href="/cv.pdf" class="btn btn-primary magnetic" download>
+                Download PDF ↓
+              </a>
+              <button type="button" id="print-cv" class="btn btn-secondary">
+                Print
+              </button>
+            </div>
+          </aside>
+        </div>
+
+        <!-- Summary -->
+        <p class="reveal mt-10 max-w-4xl text-base md:text-lg leading-relaxed text-pen-800 text-balance">
+          {summary}
+        </p>
+      </div>
+    </section>
+
+    <!-- Quick stats strip -->
+    <section class="bg-paper-deep border-b border-pen-900/10 print:hidden">
+      <div class="container-page py-6">
+        <ul class="grid grid-cols-2 md:grid-cols-4 gap-x-6 gap-y-4">
+          <li>
+            <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-pen-700">Experience</p>
+            <p class="mt-1 font-serif text-3xl text-pen-900 leading-none">3+ <span class="text-base font-sans text-pen-700 align-middle">yrs B2B tech</span></p>
+          </li>
+          <li>
+            <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-pen-700">Markets</p>
+            <p class="mt-1 font-serif text-3xl text-pen-900 leading-none">4 <span class="text-base font-sans text-pen-700 align-middle">US · LATAM · APAC · EU</span></p>
+          </li>
+          <li>
+            <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-pen-700">Cycle</p>
+            <p class="mt-1 font-serif text-2xl text-pen-900 leading-snug">Full SDR → AE</p>
+          </li>
+          <li>
+            <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-pen-700">Stack</p>
+            <p class="mt-1 font-serif text-xl text-pen-900 leading-snug">Claude · Apollo · n8n · Sheets</p>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Experience -->
+    <section class="border-b border-pen-900/10">
+      <div class="container-page py-12 md:py-16">
+        <header class="reveal mb-10">
+          <p class="section-label"><span class="font-mono">Experience</span></p>
+          <h2 class="heading-serif-mix mt-4 text-display-md text-balance">
+            Five roles. <em>One throughline.</em>
+          </h2>
+        </header>
+
+        <ol class="space-y-8 md:space-y-10">
+          {trackRecord.items.map((r, i) => (
+            <li class="reveal grid gap-4 md:gap-8 md:grid-cols-12 pb-8 md:pb-10 border-b border-pen-900/8 last:border-b-0" style={`transition-delay: ${i * 40}ms;`}>
+              <div class="md:col-span-3">
+                <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-pen-500">{r.region}</p>
+                <p class="mt-1 inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.16em]">
+                  <span class={`inline-block h-1.5 w-1.5 rounded-full ${r.status === "PAST" ? "bg-pen-400" : "bg-lime-deep"}`} />
+                  <span class={r.status === "PAST" ? "text-pen-500" : "text-pen-900"}>{r.status}</span>
+                </p>
+              </div>
+              <div class="md:col-span-9">
+                <h3 class="heading-serif-mix text-2xl md:text-3xl text-pen-900">
+                  {r.company}
+                </h3>
+                <p class="mt-1 text-base text-pen-700 italic font-serif">{r.role}</p>
+                <ul class="mt-4 space-y-2">
+                  {r.highlights.map((h) => (
+                    <li class="flex gap-3 text-sm md:text-base text-pen-800 leading-relaxed">
+                      <span class="mt-2 inline-block h-1 w-1.5 shrink-0 rounded-full bg-pen-900" />
+                      <span>{h}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <!-- Skills mapped to pipeline (matches the main site's framing) -->
+    <section class="border-b border-pen-900/10 bg-paper-deep">
+      <div class="container-page py-12 md:py-16">
+        <header class="reveal mb-10 grid gap-4 md:grid-cols-12 md:gap-12">
+          <div class="md:col-span-7">
+            <p class="section-label"><span class="font-mono">Skills</span></p>
+            <h2 class="heading-serif-mix mt-4 text-display-md text-balance">
+              Mapped to the <em>cycle</em>, not the tool category.
+            </h2>
+          </div>
+          <p class="md:col-span-5 self-end text-sm text-pen-700 max-w-prose">
+            Six pipeline stages, the skills that produce each one. Same map I would draw on day one in your team.
+          </p>
+        </header>
+
+        <ol class="grid gap-px overflow-hidden rounded-2xl border border-pen-900/10 bg-pen-900/10 md:grid-cols-2 lg:grid-cols-3">
+          {pipeline.stages.map((s, i) => (
+            <li class="bg-paper p-6 md:p-7" style={`transition-delay: ${i * 30}ms;`}>
+              <header class="flex items-center justify-between mb-4">
+                <span class="font-mono text-[10px] uppercase tracking-[0.22em] text-pen-500">
+                  Stage {String(i + 1).padStart(2, "0")}
+                </span>
+                <span class="font-mono text-[10px] uppercase tracking-[0.16em] text-pen-700">
+                  {s.items.length}
+                </span>
+              </header>
+              <h3 class="text-base font-medium text-pen-900">{s.stage}</h3>
+              <ul class="mt-3 flex flex-wrap gap-1.5">
+                {s.items.map((it) => (
+                  <li class="tag">{it}</li>
+                ))}
+              </ul>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <!-- Operating principles (compact list) -->
+    <section class="border-b border-pen-900/10">
+      <div class="container-page py-12 md:py-16">
+        <header class="reveal mb-10">
+          <p class="section-label"><span class="font-mono">Operating principles</span></p>
+          <h2 class="heading-serif-mix mt-4 text-display-md text-balance">
+            How I sell, in <em>six lines</em>.
+          </h2>
+        </header>
+
+        <ol class="grid gap-x-12 gap-y-6 md:grid-cols-2">
+          {principles.items.map((p) => (
+            <li class="reveal flex gap-4">
+              <span class="font-mono text-xs text-pen-500 mt-1 shrink-0 w-6">{p.n}</span>
+              <div>
+                <h3 class="text-base md:text-lg font-medium text-pen-900">{p.title}</h3>
+                <p class="mt-1.5 text-sm text-pen-700 leading-relaxed">{p.body}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+        <p class="reveal mt-8 font-mono text-[10px] uppercase tracking-[0.22em] text-pen-500">
+          Influences · {principles.influences}
+        </p>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section class="border-b border-pen-900/10">
+      <div class="container-page py-12 md:py-16">
+        <header class="reveal mb-10">
+          <p class="section-label"><span class="font-mono">Education</span></p>
+          <h2 class="heading-serif-mix mt-4 text-display-md text-balance">
+            Engineer first.
+          </h2>
+        </header>
+
+        <ol class="space-y-6">
+          {education.map((e) => (
+            <li class="reveal grid gap-3 md:gap-8 md:grid-cols-12">
+              <p class="md:col-span-3 font-mono text-[10px] uppercase tracking-[0.22em] text-pen-500 self-start">{e.period}</p>
+              <div class="md:col-span-9">
+                <h3 class="heading-serif-mix text-lg md:text-xl text-pen-900">{e.degree}</h3>
+                <p class="mt-1 text-sm text-pen-700">{e.institution}</p>
+                <p class="mt-3 text-sm text-pen-800 leading-relaxed">{e.note}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+
+    <!-- Contact / closing -->
+    <section class="bg-pen-900 text-paper">
+      <div class="container-page py-12 md:py-16">
+        <div class="reveal grid gap-6 md:grid-cols-12 items-end">
+          <div class="md:col-span-8">
+            <p class="font-mono text-[10px] uppercase tracking-[0.22em] text-paper/60">Hire / brief / hello</p>
+            <h2 class="heading-serif-mix mt-4 text-display-md text-paper text-balance">
+              {contact.heading}
+            </h2>
+            <p class="mt-4 text-base md:text-lg text-paper/85 max-w-2xl">{contact.subhead}</p>
+          </div>
+          <div class="md:col-span-4 flex flex-wrap items-center gap-3 print:hidden">
+            <a href={`mailto:${profile.email}`} class="btn bg-lime text-pen-900 hover:bg-lime-dim magnetic">Email</a>
+            <a href={profile.linkedin} target="_blank" rel="noopener noreferrer" class="btn border border-paper/30 text-paper hover:bg-paper/10">LinkedIn ↗</a>
+            <a href="/" class="btn border border-paper/30 text-paper hover:bg-paper/10">Portfolio ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Base>
+
+<style>
+  /* Print stylesheet — keeps the CV legible on paper / when saving as PDF
+     from the browser's print dialog. Strips backgrounds, hides nav/footer
+     extras, condenses spacing. */
+  @media print {
+    @page {
+      margin: 14mm 14mm;
+      size: A4;
+    }
+    :global(html), :global(body) {
+      background: #ffffff !important;
+      color: #16140F !important;
+      background-image: none !important;
+    }
+    :global(.cv-page) {
+      background: #ffffff !important;
+    }
+    :global(.cv-page section) {
+      page-break-inside: avoid;
+      background: #ffffff !important;
+      border-bottom-color: rgba(20, 18, 14, 0.15) !important;
+    }
+    :global(.cv-page .container-page) {
+      padding: 0 !important;
+      max-width: none !important;
+    }
+    :global(.cv-page .bg-paper-deep),
+    :global(.cv-page .bg-pen-900) {
+      background: #ffffff !important;
+      color: #16140F !important;
+    }
+    :global(.cv-page .text-paper),
+    :global(.cv-page .text-paper\/85),
+    :global(.cv-page .text-paper\/60) {
+      color: #16140F !important;
+    }
+    :global(.cv-page h1) { font-size: 36pt !important; }
+    :global(.cv-page h2) { font-size: 18pt !important; }
+    :global(.cv-page h3) { font-size: 13pt !important; }
+    :global(.cv-page p), :global(.cv-page li) { font-size: 10pt !important; line-height: 1.45 !important; }
+    :global(.cv-page section) { padding: 12mm 0 !important; }
+    :global(.print\:hidden) { display: none !important; }
+    :global(header.sticky), :global(footer), :global(#scroll-progress), :global(#back-to-top), :global(.bg-paper-deep:has(a[href*="case-studies"])) {
+      display: none !important;
+    }
+    :global(.reveal) { opacity: 1 !important; transform: none !important; }
+  }
+</style>
+
+<script>
+  document.getElementById("print-cv")?.addEventListener("click", () => {
+    window.print();
+  });
+</script>

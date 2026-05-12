@@ -389,8 +389,15 @@ export const resources = {
     "The CV is live. The playbooks I run with go out by email when requested. No gating, no funnel.",
   items: [
     {
+      title: "CV — interactive view",
+      description: "Full CV laid out as a page. Print or download PDF from there.",
+      href: "/cv",
+      cta: "Open CV",
+      available: true,
+    },
+    {
       title: "CV (PDF)",
-      description: "One-page CV. Latest version, May 2026.",
+      description: "Direct download. Latest version, May 2026.",
       href: "/cv.pdf",
       cta: "Download",
       available: true,

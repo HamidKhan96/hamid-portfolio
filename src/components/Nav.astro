@@ -68,7 +68,7 @@ const links = [
         <span>Quick nav</span>
         <kbd class="ml-1 font-mono text-[10px] tracking-wider text-pen-500 border-l border-pen-900/15 pl-1.5">⌘K</kbd>
       </button>
-      <a href={profile.cvPath} class="btn btn-secondary text-xs hidden sm:inline-flex">
+      <a href="/cv" class="btn btn-secondary text-xs hidden sm:inline-flex">
         CV
       </a>
       <a href={`mailto:${profile.email}`} class="btn btn-primary text-xs">
@@ -111,11 +111,22 @@ const links = [
       }
       <li>
         <a
-          href={profile.cvPath}
+          href="/cv"
           class="flex items-center justify-between py-4 text-base text-pen-900 hover:text-pen-700"
           data-mobile-link
         >
-          <span>Download CV</span>
+          <span>View CV</span>
+          <span class="text-pen-500" aria-hidden="true">↗</span>
+        </a>
+      </li>
+      <li>
+        <a
+          href={profile.cvPath}
+          class="flex items-center justify-between py-4 text-base text-pen-900 hover:text-pen-700"
+          data-mobile-link
+          download
+        >
+          <span>Download CV (PDF)</span>
           <span class="text-pen-500" aria-hidden="true">↓</span>
         </a>
       </li>
