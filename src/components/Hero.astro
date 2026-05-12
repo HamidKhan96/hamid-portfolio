@@ -108,20 +108,19 @@ const stats = [
         </p>
       </div>
 
-      <!-- Portrait — open, no frame. Top-aligned with the headline; scaled
-           wider than its column on desktop so the figure dominates the right
-           side. On mobile it sits centered below the CTAs. -->
-      <div class="lg:col-span-5 xl:col-span-5 flex justify-center lg:justify-end">
-        <picture class="hero-portrait block w-full max-w-[360px] sm:max-w-[420px] lg:max-w-none lg:w-[110%] xl:w-[115%] lg:-mr-4 xl:-mr-6 pointer-events-none select-none">
+      <!-- Portrait — open, full body. Height-constrained so it stays inside
+           the hero on every viewport. Top-aligned with the headline. -->
+      <div class="lg:col-span-5 xl:col-span-5 flex justify-center lg:justify-end items-start">
+        <picture class="hero-portrait block pointer-events-none select-none">
           <source srcset="/hamid-hero.webp" type="image/webp" />
           <img
             src="/hamid-hero.png"
-            alt="Hamid Khan, AE and GTM Engineer"
-            width="1316"
-            height="1900"
+            alt="Hamid Khan, AE and GTM Engineer, full-body portrait in navy suit"
+            width="513"
+            height="960"
             loading="eager"
             decoding="async"
-            class="block w-full h-auto object-contain drop-shadow-[0_24px_50px_rgba(20,18,14,0.18)]"
+            class="block w-auto h-auto max-h-[440px] sm:max-h-[520px] md:max-h-[600px] lg:max-h-[640px] xl:max-h-[720px] object-contain drop-shadow-[0_28px_60px_rgba(20,18,14,0.22)]"
           />
         </picture>
       </div>
