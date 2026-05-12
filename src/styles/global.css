@@ -50,6 +50,13 @@
     outline: 2px solid #16140F;
     outline-offset: 3px;
   }
+  /* Scoped focus rings on dark sections — the global dark outline would be
+     invisible against #0A0A0A. Use lime so keyboard focus is always visible. */
+  .on-dark *:focus-visible,
+  .on-dark button:focus-visible,
+  .on-dark a:focus-visible {
+    outline-color: #B9FF66;
+  }
 
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
