@@ -59,11 +59,14 @@ export default {
         mono: ['"JetBrains Mono"', "ui-monospace", "monospace"],
       },
       fontSize: {
-        // Larger display sizes — references push 100-160pt; we go bold but readable.
-        "display-2xl": ["clamp(4rem, 13vw, 11rem)", { lineHeight: "0.92", letterSpacing: "-0.045em" }],
-        "display-xl": ["clamp(3.5rem, 9vw, 8rem)", { lineHeight: "0.94", letterSpacing: "-0.04em" }],
-        "display-lg": ["clamp(2.5rem, 5.5vw, 4.75rem)", { lineHeight: "1", letterSpacing: "-0.035em" }],
-        "display-md": ["clamp(2rem, 3.5vw, 3rem)", { lineHeight: "1.05", letterSpacing: "-0.03em" }],
+        // Display sizes are tuned to wrap to 2-3 lines on real content at the
+        // viewports we care about (1280, 1440, 1920). Pushing larger caused
+        // the hero headline to wrap to 5-6 lines at >=1440 and dominate the
+        // section vertically. Caps lowered accordingly.
+        "display-2xl": ["clamp(3.75rem, 10vw, 8rem)", { lineHeight: "0.94", letterSpacing: "-0.045em" }],
+        "display-xl": ["clamp(3rem, 7.2vw, 6.25rem)", { lineHeight: "0.96", letterSpacing: "-0.038em" }],
+        "display-lg": ["clamp(2.25rem, 5vw, 4.25rem)", { lineHeight: "1.02", letterSpacing: "-0.032em" }],
+        "display-md": ["clamp(1.875rem, 3.5vw, 2.875rem)", { lineHeight: "1.08", letterSpacing: "-0.028em" }],
       },
       letterSpacing: {
         tightest: "-0.045em",
