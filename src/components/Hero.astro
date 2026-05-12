@@ -114,7 +114,7 @@ const stats = [
       <!-- Portrait — open, full body. Height-constrained so it stays inside
            the hero on every viewport. Top-aligned with the headline. -->
       <div class="lg:col-span-4 xl:col-span-4 flex justify-center lg:justify-end items-start">
-        <picture class="hero-portrait block pointer-events-none select-none">
+        <picture class="hero-portrait relative block pointer-events-none select-none">
           <source srcset="/hamid-hero.webp" type="image/webp" />
           <img
             src="/hamid-hero.png"
@@ -123,8 +123,15 @@ const stats = [
             height="975"
             loading="eager"
             decoding="async"
-            class="block w-auto h-auto max-h-[380px] sm:max-h-[460px] md:max-h-[500px] lg:max-h-[540px] xl:max-h-[600px] object-contain drop-shadow-[0_28px_60px_rgba(20,18,14,0.22)]"
+            class="block w-auto h-auto max-h-[380px] sm:max-h-[460px] md:max-h-[500px] lg:max-h-[540px] xl:max-h-[600px] object-contain drop-shadow-[0_28px_60px_rgba(20,18,14,0.22)] [mask-image:linear-gradient(to_bottom,black_78%,transparent_100%)] [-webkit-mask-image:linear-gradient(to_bottom,black_78%,transparent_100%)]"
           />
+          <!-- Soft navy spill that picks up the suit color and finishes
+               the photo with a blur instead of a hard chop. Sampled median
+               suit navy = #282E36. -->
+          <span
+            aria-hidden="true"
+            class="absolute left-[6%] right-[6%] bottom-0 translate-y-[28%] h-20 sm:h-24 md:h-28 rounded-[50%] bg-gradient-to-b from-[#282E36] via-[#282E36]/45 to-transparent blur-2xl pointer-events-none"
+          ></span>
         </picture>
       </div>
     </div>
